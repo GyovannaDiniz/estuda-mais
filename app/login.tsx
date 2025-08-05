@@ -3,7 +3,7 @@ import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View 
 
 const {width, height } = Dimensions.get('window');
 
-export default function login() {
+export default function Login() {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
