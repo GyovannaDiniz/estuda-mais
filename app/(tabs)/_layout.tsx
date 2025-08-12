@@ -1,3 +1,4 @@
+import Entypo from '@expo/vector-icons/Entypo';
 import { Tabs } from "expo-router";
 
 export default function TabRootLayout() {
@@ -17,6 +18,18 @@ export default function TabRootLayout() {
       <Tabs.Screen
         name="inicio"
         options={{headerShown: false}}
+      />      
+      <Tabs.Screen
+        name="materiais"
+        options={{
+          headerShown: false,
+          title: "Materiais",
+          tabBarActiveTintColor: "blue",
+          tabBarInactiveTintColor: "white",
+          tabBarIcon: ({ color, size }) => (                
+                <Entypo name="open-book" size={size} color="white" />
+          ),
+        }}
       />      
     </Tabs>
   

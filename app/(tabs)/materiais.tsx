@@ -1,40 +1,40 @@
 import React from "react";
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 const {width, height} = Dimensions.get('window');
 
 export default function Materiais(){
     return(
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Image
                 source={require('@/assets/images/logoEstuda.png')}
                 style={styles.imagem}
             />
-        <View style={styles.input}>
-            <Text style={styles.texto}>Conjuntos</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Funções</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Sequência</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Matemática Basica</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Trigonometria</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Álgebra linear</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Razão e Proporção</Text>
-        </View>
-        <View style={styles.input}>
-            <Text style={styles.texto}>Modelagem Algébrica</Text>
-        </View>
-        </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Conjuntos</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Funções</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Sequência</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Matemática Basica</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Trigonometria</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Álgebra linear</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Razão e Proporção</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>Modelagem Algébrica</Text>
+            </View>
+        </ScrollView>
     );
 }
 
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         height: height * 0.07,
         width: width * 0.8,
         marginTop: height * 0.02,
-        
+        justifyContent: "center"
     },
 
      texto: {
