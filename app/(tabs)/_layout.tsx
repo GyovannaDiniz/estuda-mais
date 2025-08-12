@@ -1,4 +1,5 @@
 import Entypo from '@expo/vector-icons/Entypo';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { Tabs } from "expo-router";
 
 export default function TabRootLayout() {
@@ -17,15 +18,20 @@ export default function TabRootLayout() {
       />
       <Tabs.Screen
         name="inicio"
-        options={{headerShown: false}}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+                <AntDesign name="home" size={size} color="white" />
+          )
+        }}
       />      
       <Tabs.Screen
         name="materiais"
         options={{
           headerShown: false,
           title: "Materiais",
-          tabBarActiveTintColor: "blue",
-          tabBarInactiveTintColor: "white",
+          tabBarActiveTintColor: "blue", //ativo
+          tabBarInactiveTintColor: "white", //inativo
           tabBarIcon: ({ color, size }) => (                
                 <Entypo name="open-book" size={size} color="white" />
           ),
