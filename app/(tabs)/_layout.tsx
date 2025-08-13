@@ -1,5 +1,5 @@
-import Entypo from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
 import { Tabs } from "expo-router";
 
 export default function TabRootLayout() {
@@ -9,7 +9,7 @@ export default function TabRootLayout() {
         name="index"
         options={{
           headerShown: false, //diz para o Stack.Navigator(usei o Stack, pois é um atalho do expo-router) não mostrar a barra superior (header).
-          title: 'Teste'
+          title: 'splash screen'
         }}
       />      
       <Tabs.Screen
@@ -30,7 +30,7 @@ export default function TabRootLayout() {
         options={{
           headerShown: false,
           title: "Materiais",
-          tabBarActiveTintColor: "blue", //ativo
+          tabBarActiveTintColor: "red", //ativo
           tabBarInactiveTintColor: "white", //inativo
           tabBarIcon: ({ color, size }) => (                
                 <Entypo name="open-book" size={size} color="white" />
@@ -38,8 +38,8 @@ export default function TabRootLayout() {
         }}
       />      
     </Tabs>
-  
+
   );
-
-
 }
+
+

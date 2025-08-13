@@ -44,18 +44,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center', // centraliza verticalmente
         alignItems: 'center',     // centraliza horizontalmente
         backgroundColor: '#fff',
-        paddingTop: height * 0.08,
+        paddingTop: height * 0.0,
         
     },
 
     imagem: {
-        width: width * 0.8,
-        height: height * 0.2,           
-        marginBottom: height * 0.1,
+        width: width * 0.7,
+        height: height * 0.2,
+        marginTop: height * 0.1,
+        marginBottom: height * 0.001,
     },
 
     input: {
-        backgroundColor: '#ccc',
+        backgroundColor: '#FEADA6',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,
