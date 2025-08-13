@@ -11,28 +11,64 @@ export default function Materiais(){
                 style={styles.imagem}
             />
             <View style={styles.input}>
-                <Text style={styles.texto}>Conjuntos</Text>
+                <Text style={styles.texto}>Conjuntos</Text> 
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Funções</Text>
+                <Text style={styles.texto}>conjuntos numericos</Text>
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Sequência</Text>
+                <Text style={styles.texto}>funções</Text>
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Matemática Basica</Text>
+                <Text style={styles.texto}>função afim</Text>
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Trigonometria</Text>
+                <Text style={styles.texto}>função quadrátrica</Text>
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Álgebra linear</Text>
+                <Text style={styles.texto}>função modular</Text>
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Razão e Proporção</Text>
+                <Text style={styles.texto}>função exponencial</Text>
             </View>
             <View style={styles.input}>
-                <Text style={styles.texto}>Modelagem Algébrica</Text>
+                <Text style={styles.texto}>logaritmo e função logarítmica</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>sequências númericas</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>trigonometria</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>matrizes</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>sistemas lineares</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>geometria plana</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>geometria espacial</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>análise combinatória, probabilide e tratamento da informação</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>matemática financeira</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}>estatística básica</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}> geometria analítica</Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}> circunferência </Text>
+            </View>
+            <View style={styles.input}>
+                <Text style={styles.texto}> crônicas </Text>
             </View>
         </ScrollView>
     );
@@ -51,8 +87,8 @@ const styles = StyleSheet.create({
     imagem: {
         width: width * 0.7,
         height: height * 0.2,
-        marginTop: height * 0.1,
-        marginBottom: height * 0.001,
+        marginTop: height * 0.9, //modifiquei pra continuar aparecendo 
+        
     },
 
     input: {
