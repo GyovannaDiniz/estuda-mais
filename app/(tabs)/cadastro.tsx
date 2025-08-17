@@ -19,6 +19,7 @@ export default function cadastro(){
                 />
                 <TextInput
                     style={styles.inputComIcone}
+                    placeholderTextColor={'#ccc'}
                     placeholder='Nome'//nomezinho escrito dentro do campo
                     value={nome}
                     onChangeText={setNome} //vai servir para atualizar o valor
@@ -33,6 +34,7 @@ export default function cadastro(){
                 />
                 <TextInput
                     style={styles.inputComIcone}
+                    placeholderTextColor={'#ccc'}
                     placeholder='Email'
                     value={email}
                     onChangeText={(setEmail)}
@@ -46,6 +48,7 @@ export default function cadastro(){
                 />
                 <TextInput
                     style={styles.inputComIcone}
+                    placeholderTextColor={'#ccc'}
                     placeholder='Senha'
                     value={senha}
                     secureTextEntry={true}
@@ -152,7 +155,7 @@ const styles = StyleSheet.create({
         borderRadius: width * 0.1,
         height: height * 0.06,
         paddingHorizontal: width * 0.04,
-        marginBottom: height * 0.03,
+        marginBottom: height * 0.02,
         
     },
     

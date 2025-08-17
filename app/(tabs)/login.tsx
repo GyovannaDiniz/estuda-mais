@@ -96,11 +96,11 @@ const Styles = StyleSheet.create ({
       flexDirection: 'row', //// o Ícone e o input ficam lado a lado
       alignItems: 'center',
       backgroundColor: '#F7FAFB',
-      borderColor: '#ccc', //cor da borda
+      borderColor: '#C1C1C1', //cor da borda
       borderWidth: width * 0.001, //tamanho da borda dentro
       borderRadius: width * 0.1,
-      height: height * 0.07,
-      width: width * 0.7, //0.6
+      height: height * 0.06,
+      width: width * 0.6, //0.6
       paddingHorizontal: width * 0.04,
       marginBottom: height * 0.03,
     },
