@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center', // centraliza verticalmente
         alignItems: 'center',     // centraliza horizontalmente
         backgroundColor: '#fff',
-        paddingTop: height * 0.0,
+        paddingTop: height * 0.1,
         
     },
 
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 
      texto: {
         textAlign: 'center',
-        fontSize: 24,
+        fontSize: 17,
         color: '#000',
         fontWeight:'bold',
     },

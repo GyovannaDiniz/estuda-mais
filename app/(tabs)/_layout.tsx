@@ -17,6 +17,10 @@ export default function TabRootLayout() {
         options={{headerShown: false}}
       />
       <Tabs.Screen
+        name="login"
+        options={{headerShown: false}}
+      />
+      <Tabs.Screen
         name="inicio"
         options={{
           headerShown: false,

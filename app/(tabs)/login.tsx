@@ -10,7 +10,7 @@ export default function Login() {
   return(
     <View style={Styles.container}>
       <View style={Styles.circulo}>
-        <Text style={Styles.titulo}>LOG IN</Text>
+        <Text style={Styles.titulo}>Log in</Text>
       <View style={Styles.campoComIcone}>
         <Image 
           source={require('@/assets/images/e-mail.png')}
@@ -18,10 +18,12 @@ export default function Login() {
         />
       <TextInput
         style={Styles.inputComIcone}
-        placeholder="email"
+        placeholder="Email"
+        placeholderTextColor={'#ccc'}
         value={email}
         onChangeText={setEmail}
       />
+      
         </View>
         <View style={Styles.campoComIcone}>
           <Image
@@ -30,9 +32,11 @@ export default function Login() {
           />
         <TextInput
           style={Styles.inputComIcone}
-          placeholder="senha"
+          placeholderTextColor={'#ccc'}
+          placeholder="Senha"
           value={senha}
           onChangeText={setSenha}
+          secureTextEntry={true}
       />
         </View>
       </View>
@@ -76,14 +80,17 @@ const Styles = StyleSheet.create ({
 
 
     titulo: {
-      textAlign:'center', 
-      height: height * 0.01,
-      fontSize: width * 0.08, //tam da fonte
-      marginBottom: height * 0.10, //margem inferior 
-      marginVertical: height * 0.010, //margem vertical
-        
+      textAlign:'center',
+      color:'#000', 
+      fontSize: width * 0.06, //tam da fonte
+      marginBottom: height * 0.02, //espaço abaixo de cada campo
+      marginVertical: height * 0.07, //margem vertical
+      
     },
 
+    campoComTexto: {
+      color: '#000'
+    },
 
     campoComIcone: {
       flexDirection: 'row', //// o Ícone e o input ficam lado a lado
@@ -131,23 +138,24 @@ const Styles = StyleSheet.create ({
     linhaComTexto: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: height * 0.02,
-      marginBottom: height * 0.02,
+      marginVertical: height * 0.02, //// espacinho acima e abaixo da linha com "OU"
+     
+    },
+
+    
+
+    linha: {
+      height: height * 0.002,
+      width: width * 0.2,
+      backgroundColor: '#000',
+      marginVertical: height * 0.02,
       
     },
 
-    linha: {
-      flex: 1,
-      height: height * 0.1,
-      backgroundColor: '#C1C1C1',
-      marginHorizontal: width * 0.15,
-    },
-
     ou: {
-      fontSize: height * 0.02,
-      color: '#000',
-      fontWeight: 'bold',
+       marginHorizontal: width * 0.02,
+        fontSize: 14,
+        color: '#000',
     },
 
 })
