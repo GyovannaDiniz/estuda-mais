@@ -1,5 +1,5 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Entypo from '@expo/vector-icons/Entypo';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Tabs } from "expo-router";
 
 export default function TabRootLayout() {
@@ -24,8 +24,10 @@ export default function TabRootLayout() {
         name="inicio"
         options={{
           headerShown: false,
+          tabBarActiveTintColor:'pink',
+          tabBarInactiveTintColor:'white',
           tabBarIcon: ({ color, size }) => (
-                <AntDesign name="home" size={size} color="white" />
+                <Ionicons name="home-outline" size={size} color="white" />
           )
         }}
       />      
@@ -34,10 +36,10 @@ export default function TabRootLayout() {
         options={{
           headerShown: false,
           title: "Materiais",
-          tabBarActiveTintColor: "red", //ativo
+          tabBarActiveTintColor: "pink", //ativo
           tabBarInactiveTintColor: "white", //inativo
           tabBarIcon: ({ color, size }) => (                
-                <Entypo name="open-book" size={size} color="white" />
+                <MaterialCommunityIcons name="book-open-page-variant-outline" size={size} color="white" />
           ),
         }}
       />      
