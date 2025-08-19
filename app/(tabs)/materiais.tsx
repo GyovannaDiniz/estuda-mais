@@ -12,67 +12,137 @@ export default function Materiais(){
                 style={styles.imagem}
             />
             <ScrollView>
-                <Accordion titulo="Conjuntos" estilo={styles.elementoAccordion} itens={["a", "b", "c"]}></Accordion>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>Conjuntos</Text> 
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>conjuntos numericos</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>funções</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>função afim</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>função quadrátrica</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>função modular</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>função exponencial</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>logaritmo e função logarítmica</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>sequências númericas</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>trigonometria</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>matrizes</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>sistemas lineares</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>geometria plana</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>geometria espacial</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>análise combinatória, probabilide e tratamento da informação</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>matemática financeira</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}>estatística básica</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}> geometria analítica</Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}> circunferência </Text>
-                </View>
-                <View style={styles.input}>
-                    <Text style={styles.texto}> crônicas </Text>
-                </View>
+                <Accordion 
+                    titulo="Conjuntos" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="conjuntos numericos" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="funções" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >        
+                </Accordion>
+
+                <Accordion 
+                    titulo="função afim" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="função quadrátrica" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>                    
+                </Accordion>
+                
+                <Accordion 
+                    titulo="função modular" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="função exponencial" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="logaritmo e função logarítmica" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="sequências númericas" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="trigonometria" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >   
+                </Accordion>
+
+                <Accordion 
+                    titulo="matrizes" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+
+                <Accordion 
+                    titulo="sistemas lineares" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}
+                >
+                </Accordion>
+                
+                <Accordion 
+                    titulo="geometria plana"
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="geometria espacial" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="análise combinatória, probabilide e tratamento da informação" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="matemática financeiraonjuntos" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="estatística básica" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="geometria analítica" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="circunferência" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+
+                <Accordion 
+                    titulo="crônicas" 
+                    estilo={styles.elementoAccordion} 
+                    itens={["a", "b", "c"]}>
+                </Accordion>
+              
             </ScrollView>
         </View>
     );
@@ -107,6 +177,11 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
     },
     elementoAccordion: {
-        backgroundColor: '#FEADA6',      
+        backgroundColor: '#FEADA6',
+        borderRadius: width * 0.2,
+        height: height * 0.07,
+        width: width * 0.8,
+        marginTop: height * 0.02,
+        justifyContent: "center"  
     }
 })

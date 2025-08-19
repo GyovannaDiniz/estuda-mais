@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { Dimensions, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+
+const {width, height} = Dimensions.get('window');
 
 const Accordion = ({ titulo, estilo, itens }) => {
 
@@ -26,9 +28,13 @@ const Accordion = ({ titulo, estilo, itens }) => {
 
 const styles = StyleSheet.create({
     accordionItem : {
-       backgroundColor: "#ffdad7",
-       borderRadius: 4,
-       fontSize: 15
+        backgroundColor: "#ffdad7",
+        borderRadius: width * 0.02,
+        fontSize: 15,
+        height: height * 0.07,
+        width: width * 0.8,
+        justifyContent: "center",
+        
     },
     accordionContainer: {
         flex: 1,
