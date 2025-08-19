@@ -1,10 +1,13 @@
 import React from "react";
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View, TouchableOpacity, GestureResponderEvent } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
 export default function inicio() {
 
+    const materiaisClick = (e: GestureResponderEvent) => {
+        console.log("tocou em materiais");
+    };
   
     return(
         <View style={styles.container}>
@@ -12,20 +15,20 @@ export default function inicio() {
             source={require('@/assets/images/logoEstuda.png')}
             style={[styles.imagem, { resizeMode: 'contain' }]}
             />
-        <View style={styles.campoComIcone}>
-            <Text style={styles.texto}>Materiais</Text>
-            <Image 
-             source={require('@/assets/images/material.png')}
-             style={styles.iconeDentro}
+            <TouchableOpacity style={styles.campoComIcone} onPress={materiaisClick}>
+                <Text style={styles.texto}>Materiais</Text>
+                <Image 
+                source={require('@/assets/images/material.png')}
+                style={styles.iconeDentro}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.campoComIcone}>
+                <Text style={styles.texto}>Simulados</Text>
+                <Image
+                source={require('@/assets/images/simulados.png')}
+                style={styles.iconeDentro}
             />
-        </View>
-        <View style={styles.campoComIcone}>
-            <Text style={styles.texto}>Simulados</Text>
-            <Image
-            source={require('@/assets/images/simulados.png')}
-            style={styles.iconeDentro}
-        />
-        </View>
+            </TouchableOpacity>
         </View>
     );
   
