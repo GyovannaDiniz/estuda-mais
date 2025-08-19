@@ -15,132 +15,141 @@ export default function Materiais(){
                 <Accordion 
                     titulo="Conjuntos" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="conjuntos numericos" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="funções" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
-                >        
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >  
                 </Accordion>
 
                 <Accordion 
                     titulo="função afim" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="função quadrátrica" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>                    
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >                   
                 </Accordion>
                 
                 <Accordion 
                     titulo="função modular" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="função exponencial" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="logaritmo e função logarítmica" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="sequências númericas" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="trigonometria" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
-                >   
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="matrizes" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
 
                 <Accordion 
                     titulo="sistemas lineares" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
                 </Accordion>
                 
                 <Accordion 
                     titulo="geometria plana"
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                   itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="geometria espacial" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="análise combinatória, probabilide e tratamento da informação" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="matemática financeiraonjuntos" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="estatística básica" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="geometria analítica" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="circunferência" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
 
                 <Accordion 
                     titulo="crônicas" 
                     estilo={styles.elementoAccordion} 
-                    itens={["a", "b", "c"]}>
+                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                >
                 </Accordion>
               
             </ScrollView>

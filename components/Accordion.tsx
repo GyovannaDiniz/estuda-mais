@@ -29,11 +29,11 @@ const Accordion = ({ titulo, estilo, itens }) => {
 const styles = StyleSheet.create({
     accordionItem : {
         backgroundColor: "#ffdad7",
-        borderRadius: width * 0.02,
+        borderRadius: width * 0.03,
         fontSize: 15,
         height: height * 0.07,
         width: width * 0.8,
-        justifyContent: "center",
+        
         
     },
     accordionContainer: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     accordionText: {
         padding: 12,
-        marginLeft: 10
+        marginLeft: 10,
     }
 });
 
