@@ -5,6 +5,23 @@ import Accordion from "@/components/Accordion";
 const {width, height} = Dimensions.get('window');
 
 export default function Materiais(){
+    const listaMateriais = [
+        { id: 1, nome: 'Vídeo aulas' },
+        { id: 2, nome: 'Resumos' },
+        { id: 3, nome: 'Listas de exercícios' },
+    ];  
+    const listaConteudos = [
+        { id: 1, nome: 'Professor fulano' },
+        { id: 2, nome: 'Professor sicrano' },
+        { id: 3, nome: 'Professor antonio' },
+    ];
+
+    const conteudosAccordion = listaConteudos.map((item, index) => <Text key={item.id} style={styles.textoAccordionInterno}>{item.nome}</Text>)
+    const accordions = listaMateriais.map(item =>
+        <Accordion key={item.id} estilo={styles.elementoAccordionInterno} titulo={item.nome} itens={conteudosAccordion}/>
+    );
+    const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
+    const conteudosText = conteudos.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
     return(
         <View style={styles.container}>
             <Image
@@ -12,10 +29,11 @@ export default function Materiais(){
                 style={styles.imagem}
             />
             <ScrollView>
+                
                 <Accordion 
                     titulo="Conjuntos" 
                     estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                    itens={accordions}
                 >
                 </Accordion>
 
@@ -170,7 +188,7 @@ const styles = StyleSheet.create({
         height: height * 0.2,
     },
 
-    input: {
+    /*input: {
         backgroundColor: '#FEADA6',
         borderRadius: width * 0.2,
         height: height * 0.07,
@@ -180,13 +198,29 @@ const styles = StyleSheet.create({
     },
 
      texto: {
-        textAlign: 'center',
+        /textAlign: 'center',
         fontSize: 17,
         color: '#000',
         fontWeight:'bold',
-    },
+    },*/
     elementoAccordion: {
         backgroundColor: '#FEADA6',
+        borderRadius: width * 0.2,
+        height: height * 0.07,
+        width: width * 0.8,
+        marginTop: height * 0.02,
+        justifyContent: "center"  
+    },
+    elementoAccordionInterno: {
+        backgroundColor: '#49f3ffff',
+        borderRadius: width * 0.2,
+        height: height * 0.07,
+        width: width * 0.8,
+        marginTop: height * 0.02,
+        justifyContent: "center"  
+    },
+    textoAccordionInterno: {
+        backgroundColor: '#f14fdcff',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,

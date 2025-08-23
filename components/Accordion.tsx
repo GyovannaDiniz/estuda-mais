@@ -4,6 +4,7 @@ import { Dimensions, Text, TouchableOpacity, View, StyleSheet } from 'react-nati
 const {width, height} = Dimensions.get('window');
 
 const Accordion = ({ titulo, estilo, itens }) => {
+  
 
     const [exibirLista, setExibirLista] = useState(false);
 
@@ -11,16 +12,14 @@ const Accordion = ({ titulo, estilo, itens }) => {
         setExibirLista(!exibirLista);
     }
 
+
     return (
     <View>
         <TouchableOpacity style={estilo} onPress={alternarVisibilidade}>
             <Text style={styles.accordionText}>{titulo}</Text>
         </TouchableOpacity>
         {exibirLista && <View style={styles.accordionContainer}>
-                {itens.map((item, index) => (
-            <Text key={index} style={styles.accordionItem}> {item} </Text>
-
-                ))}
+                {itens.map((item, index) => (item))}
         </View>}
     </View>
     );
@@ -33,12 +32,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         height: height * 0.07,
         width: width * 0.8,
-        
-        
+        //marginTop: height * 0.2
+        //marginVertical: height * 0.0001
     },
     accordionContainer: {
         flex: 1,
-        flexDirection: "column"
+        flexDirection: "column",
     },
     accordionText: {
         padding: 12,

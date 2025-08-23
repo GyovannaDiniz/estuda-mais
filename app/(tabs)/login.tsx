@@ -126,7 +126,7 @@ const Styles = StyleSheet.create ({
       alignItems: 'center',
       width: width * 0.5,
       height: height * 0.06,
-     marginTop: height * 0.03, //posição do botao      
+      marginTop: height * 0.03, //posição do botao      
     },
 
     texto: {
