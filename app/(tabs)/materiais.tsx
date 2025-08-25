@@ -1,6 +1,6 @@
+import Accordion from "@/components/Accordion";
 import React from "react";
 import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import Accordion from "@/components/Accordion";
 
 const {width, height} = Dimensions.get('window');
 
@@ -10,18 +10,26 @@ export default function Materiais(){
         { id: 2, nome: 'Resumos' },
         { id: 3, nome: 'Listas de exercícios' },
     ];  
-    const listaConteudos = [
+    const listaLinks = [
         { id: 1, nome: 'Professor fulano' },
         { id: 2, nome: 'Professor sicrano' },
         { id: 3, nome: 'Professor antonio' },
     ];
+    const listaConteudos = [
+        {id: 1, nome: 'Conjuntos'},
+        {id: 2, nome: 'conjuntos Numericos'},
+        {id: 3, nome: 'funções'},
+        {id: 4, nome: 'função afim'},
+    ];
+    
 
-    const conteudosAccordion = listaConteudos.map((item, index) => <Text key={item.id} style={styles.textoAccordionInterno}>{item.nome}</Text>)
+    const conteudosAccordion = listaLinks.map((item, index) => <Text key={item.id} style={styles.textoAccordionInterno}>{item.nome}</Text>)
     const accordions = listaMateriais.map(item =>
         <Accordion key={item.id} estilo={styles.elementoAccordionInterno} titulo={item.nome} itens={conteudosAccordion}/>
     );
     const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
     const conteudosText = conteudos.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
+
     return(
         <View style={styles.container}>
             <Image
@@ -30,17 +38,31 @@ export default function Materiais(){
             />
             <ScrollView>
                 
-                <Accordion 
+                <View style={styles.mainContent}>
+                    <View style={styles.listaConteudos}>
+                    {listaConteudos.map((item, index) => (
+                        <Accordion
+                            key={item.id}
+                            estilo={styles.elementoAccordion}
+                            titulo={item.nome}
+                            itens={accordions} 
+                        />
+                    ))}
+                   </View>
+                </View>
+
+
+                {/* <Accordion 
                     titulo="Conjuntos" 
                     estilo={styles.elementoAccordion} 
                     itens={accordions}
                 >
-                </Accordion>
+                </Accordion> */}
 
-                <Accordion 
+                {/* <Accordion 
                     titulo="conjuntos numericos" 
                     estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
+                    itens={accordions}
                 >
                 </Accordion>
 
@@ -168,7 +190,7 @@ export default function Materiais(){
                     estilo={styles.elementoAccordion} 
                     itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
                 >
-                </Accordion>
+                </Accordion> */}
               
             </ScrollView>
         </View>
@@ -226,5 +248,7 @@ const styles = StyleSheet.create({
         width: width * 0.8,
         marginTop: height * 0.02,
         justifyContent: "center"  
-    }
+    }, 
+
+    
 })
