@@ -5,22 +5,39 @@ import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-nat
 const {width, height} = Dimensions.get('window');
 
 export default function Materiais(){
+    const listaConteudos = [
+        {id: 1, nome: 'Conjuntos'},
+        {id: 2, nome: 'Conjuntos Numericos'},
+        {id: 3, nome: 'Funções'},
+        {id: 4, nome: 'Função Afim'},
+        {id: 5, nome: 'Função Quadrátrica'},
+        {id: 6, nome: 'Função Modular'},
+        {id: 7, nome: 'Funções Exponencial'},
+        {id: 8, nome: 'Logaritmo e Função Logarítmica'},
+        {id: 9, nome: 'Sequências Númericas'},
+        {id: 10, nome: 'Trigonometria'},
+        {id: 11, nome: 'Matrizes'},
+        {id: 12, nome: 'Sistemas Lineares'},
+        {id: 13, nome: 'Geometria Plana'},
+        {id: 14, nome: 'Geometria Espacial'},
+        {id: 15, nome: 'Análise Combinatória, Probabilide e Tratamento da Informação'},
+        {id: 16, nome: 'Matemática Financeira'},
+        {id: 17, nome: 'Estatística Básica'},
+        {id: 18, nome: 'Geometria Analítica'},
+        {id: 19, nome: 'Circunferência'},
+        {id: 20, nome: 'Crônicas'},
+    ];
     const listaMateriais = [
         { id: 1, nome: 'Vídeo aulas' },
         { id: 2, nome: 'Resumos' },
         { id: 3, nome: 'Listas de exercícios' },
     ];  
     const listaLinks = [
-        { id: 1, nome: 'Professor fulano' },
-        { id: 2, nome: 'Professor sicrano' },
-        { id: 3, nome: 'Professor antonio' },
+        { id: 1, nome: 'Link com o Professor fulano' },
+        { id: 2, nome: 'Link com o Professor sicrano' },
+        { id: 3, nome: 'Link com o Professor antonio' },
     ];
-    const listaConteudos = [
-        {id: 1, nome: 'Conjuntos'},
-        {id: 2, nome: 'conjuntos Numericos'},
-        {id: 3, nome: 'funções'},
-        {id: 4, nome: 'função afim'},
-    ];
+    
     
 
     const conteudosAccordion = listaLinks.map((item, index) => <Text key={item.id} style={styles.textoAccordionInterno}>{item.nome}</Text>)
@@ -40,6 +57,8 @@ export default function Materiais(){
                 
                 <View style={styles.mainContent}>
                     <View style={styles.listaConteudos}>
+                        {/* <Image 
+                            source={} />  */}
                     {listaConteudos.map((item, index) => (
                         <Accordion
                             key={item.id}
@@ -47,151 +66,10 @@ export default function Materiais(){
                             titulo={item.nome}
                             itens={accordions} 
                         />
+                    
                     ))}
                    </View>
                 </View>
-
-
-                {/* <Accordion 
-                    titulo="Conjuntos" 
-                    estilo={styles.elementoAccordion} 
-                    itens={accordions}
-                >
-                </Accordion> */}
-
-                {/* <Accordion 
-                    titulo="conjuntos numericos" 
-                    estilo={styles.elementoAccordion} 
-                    itens={accordions}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="funções" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >  
-                </Accordion>
-
-                <Accordion 
-                    titulo="função afim" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="função quadrátrica" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >                   
-                </Accordion>
-                
-                <Accordion 
-                    titulo="função modular" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="função exponencial" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="logaritmo e função logarítmica" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="sequências númericas" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="trigonometria" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="matrizes" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="sistemas lineares" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-                
-                <Accordion 
-                    titulo="geometria plana"
-                    estilo={styles.elementoAccordion} 
-                   itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="geometria espacial" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="análise combinatória, probabilide e tratamento da informação" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="matemática financeiraonjuntos" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="estatística básica" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="geometria analítica" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="circunferência" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion>
-
-                <Accordion 
-                    titulo="crônicas" 
-                    estilo={styles.elementoAccordion} 
-                    itens={["Vídeos aulas", "Lista de exercicio ", "Resumos"]}
-                >
-                </Accordion> */}
-              
             </ScrollView>
         </View>
     );
@@ -210,21 +88,6 @@ const styles = StyleSheet.create({
         height: height * 0.2,
     },
 
-    /*input: {
-        backgroundColor: '#FEADA6',
-        borderRadius: width * 0.2,
-        height: height * 0.07,
-        width: width * 0.8,
-        marginTop: height * 0.02,
-        justifyContent: "center"
-    },
-
-     texto: {
-        /textAlign: 'center',
-        fontSize: 17,
-        color: '#000',
-        fontWeight:'bold',
-    },*/
     elementoAccordion: {
         backgroundColor: '#FEADA6',
         borderRadius: width * 0.2,
@@ -234,21 +97,23 @@ const styles = StyleSheet.create({
         justifyContent: "center"  
     },
     elementoAccordionInterno: {
-        backgroundColor: '#49f3ffff',
+        backgroundColor: '#FEDBD8',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,
-        marginTop: height * 0.02,
+        marginTop: height * 0.001,
         justifyContent: "center"  
     },
     textoAccordionInterno: {
-        backgroundColor: '#f14fdcff',
+        backgroundColor: '#F3B6B6',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,
-        marginTop: height * 0.02,
-        justifyContent: "center"  
+        justifyContent: 'center',
+        color: '#002AFF',
     }, 
+
+    
 
     
 })
