@@ -57,8 +57,7 @@ export default function Materiais(){
                 
                 <View style={styles.mainContent}>
                     <View style={styles.listaConteudos}>
-                        {/* <Image 
-                            source={} />  */}
+        
                     {listaConteudos.map((item, index) => (
                         <Accordion
                             key={item.id}
@@ -110,10 +109,14 @@ const styles = StyleSheet.create({
         height: height * 0.07,
         width: width * 0.8,
         justifyContent: 'center',
+        lineHeight: height * 0.07,
         color: '#002AFF',
+        paddingLeft: width * 0.05
     }, 
+    mainContent: {
 
-    
+    },
+    listaConteudos: {
 
-    
+    }
 })
