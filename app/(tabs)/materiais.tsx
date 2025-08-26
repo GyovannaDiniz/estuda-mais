@@ -40,9 +40,12 @@ export default function Materiais(){
     
     
 
-    const conteudosAccordion = listaLinks.map((item, index) => <Text key={item.id} style={styles.textoAccordionInterno}>{item.nome}</Text>)
+    const conteudosAccordion = listaLinks.map((item, index) => 
+        <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.nome} iconeRemover />
+    );
+        
     const accordions = listaMateriais.map(item =>
-        <Accordion key={item.id} estilo={styles.elementoAccordionInterno} titulo={item.nome} itens={conteudosAccordion}/>
+        <Accordion key={item.id} estilo={styles.elementoAccordionInterno} titulo={item.nome} itens={conteudosAccordion} iconeAdicionar />
     );
     const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
     const conteudosText = conteudos.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
@@ -54,20 +57,19 @@ export default function Materiais(){
                 style={styles.imagem}
             />
             <ScrollView>
-                
                 <View style={styles.mainContent}>
                     <View style={styles.listaConteudos}>
-        
-                    {listaConteudos.map((item, index) => (
-                        <Accordion
-                            key={item.id}
-                            estilo={styles.elementoAccordion}
-                            titulo={item.nome}
-                            itens={accordions} 
-                        />
-                    
-                    ))}
-                   </View>
+                        {listaConteudos.map((item, index) => (
+                            <Accordion
+                                key={item.id}
+                                estilo={styles.elementoAccordion}
+                                titulo={item.nome}
+                                itens={accordions}
+                                
+                            />
+                        
+                        ))}
+                    </View>
                 </View>
             </ScrollView>
         </View>
@@ -88,20 +90,26 @@ const styles = StyleSheet.create({
     },
 
     elementoAccordion: {
+        flexDirection: 'row',
         backgroundColor: '#FEADA6',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,
         marginTop: height * 0.02,
-        justifyContent: "center"  
+        justifyContent: "center",  
+        paddingRight: 15,
+        alignItems: 'center'
     },
     elementoAccordionInterno: {
+        flexDirection: 'row',
         backgroundColor: '#FEDBD8',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,
         marginTop: height * 0.001,
-        justifyContent: "center"  
+        justifyContent: "center",  
+        paddingRight: 15,
+        alignItems: 'center'
     },
     textoAccordionInterno: {
         backgroundColor: '#F3B6B6',
@@ -111,7 +119,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         lineHeight: height * 0.07,
         color: '#002AFF',
-        paddingLeft: width * 0.05
+        paddingLeft: width * 0.05,
     }, 
     mainContent: {
 

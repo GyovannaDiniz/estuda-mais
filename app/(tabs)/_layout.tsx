@@ -20,11 +20,6 @@ export default function TabRootLayout() {
         name="login"
         options={{
           headerShown: false,
-          tabBarActiveTintColor: 'pink',
-          tabBarInactiveTintColor: 'white',
-          tabBarIcon: ({ color, size}) => (
-              <Ionicons name="home-outline" size={size} colo='white' />
-          )
         }}
       />
       <Tabs.Screen
