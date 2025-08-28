@@ -11,6 +11,7 @@ const Accordion = (props) => {
     itens = props.itens;
     iconeAdicionar = false || props.iconeAdicionar;
     iconeRemover = false || props.iconeRemover;
+    corTexto = props.corTexto; //
 
     const [exibirLista, setExibirLista] = useState(false);
 
@@ -22,7 +23,7 @@ const Accordion = (props) => {
     return (
     <View>
         <TouchableOpacity style={estilo} onPress={alternarVisibilidade}>
-            <Text style={styles.accordionText}>{titulo}</Text>
+            <Text style={[styles.accordionText, {color: corTexto || 'black'}]}>{titulo}</Text>
             { iconeAdicionar ? 
                 <FontAwesome6 name="add" size={15} color="black" />
                 : false

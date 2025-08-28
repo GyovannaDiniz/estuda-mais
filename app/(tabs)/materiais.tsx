@@ -41,7 +41,7 @@ export default function Materiais(){
     
 
     const conteudosAccordion = listaLinks.map((item, index) => 
-        <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.nome} iconeRemover />
+        <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.nome} corTexto='#002AFF' iconeRemover />
     );
         
     const accordions = listaMateriais.map(item =>
@@ -112,14 +112,15 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textoAccordionInterno: {
+        flexDirection: 'row',//
+        paddingRight: 15,//
+        alignItems:'center',//
         backgroundColor: '#F3B6B6',
         borderRadius: width * 0.2,
         height: height * 0.07,
         width: width * 0.8,
         justifyContent: 'center',
-        lineHeight: height * 0.07,
-        color: '#002AFF',
-        paddingLeft: width * 0.05,
+        paddingLeft: width * 0.01, //mudei para ficar mais proximo da barrinha esquerda 
     }, 
     mainContent: {
 
