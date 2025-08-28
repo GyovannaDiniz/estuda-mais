@@ -11,7 +11,7 @@ export default function cadastro(){
     return (
         <View style={styles.container}>
             <View style={styles.circulo}>
-                 <Text style={styles.titulo}>Sign Up</Text>
+                 <Text style={styles.titulo}>Cadastro</Text>
             <View style={styles.campoComIcone}>
                 <Image 
                     source={require('@/assets/images/userNome.png')}
@@ -56,7 +56,7 @@ export default function cadastro(){
                 />              
             </View>
                 <TouchableOpacity style={styles.botao} onPress={() => console.log('clicado')}>
-                    <Text style={styles.texto}>Sing Up</Text>
+                    <Text style={styles.texto}>Cadastre-se</Text>
                 </TouchableOpacity>
             <View style={styles.linhaComTexto}>
                 <View style={styles.linha}/>
@@ -93,9 +93,9 @@ const styles = StyleSheet.create({
 
     titulo: {
         textAlign:'center', 
-        fontSize: width * 0.06,
+        fontSize: width * 0.05,
         marginBottom: height * 0.02, //espaço abaixo de cada campo
-        
+        fontWeight:'bold',
     },
 
     input: {
@@ -150,8 +150,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#F7FAFB',
-        borderColor: '#ccc',
-        borderWidth: 1,
         borderRadius: width * 0.1,
         height: height * 0.06,
         paddingHorizontal: width * 0.04,
@@ -161,8 +159,8 @@ const styles = StyleSheet.create({
     
 
     iconeDentro: {
-        width: width * 0.07,
-        height:  height * 0.04,
+        width: width * 0.05,
+        height:  height * 0.03,
         marginRight: 10,
     },
 

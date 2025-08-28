@@ -10,7 +10,7 @@ export default function Login() {
   return(
     <View style={Styles.container}>
       <View style={Styles.circulo}>
-        <Text style={Styles.titulo}>Log in</Text>
+        <Text style={Styles.titulo}>Entrar</Text>
       <View style={Styles.campoComIcone}>
         <Image 
           source={require('@/assets/images/e-mail.png')}
@@ -41,7 +41,7 @@ export default function Login() {
         </View>
       </View>
         <TouchableOpacity style={Styles.botao} onPress={() => console.log('clicado')}>
-              <Text style={Styles.texto}>Login</Text>
+              <Text style={Styles.texto}>Entrar</Text>
         </TouchableOpacity>
 
           <View style={Styles.linhaComTexto}>
@@ -106,9 +106,10 @@ const Styles = StyleSheet.create ({
     },
 
     iconeDentro: {
-      width: width * 0.07,
-      height: height * 0.04,
+      width: width * 0.05,
+      height:  height * 0.03,
       marginRight: 10,
+      fontWeight:'bold',
     },
 
     inputComIcone: {
