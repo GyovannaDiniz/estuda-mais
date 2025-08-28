@@ -85,7 +85,7 @@ const Styles = StyleSheet.create ({
       fontSize: width * 0.06, //tam da fonte
       marginBottom: height * 0.02, //espaço abaixo de cada campo
       marginVertical: height * 0.07, //margem vertical
-      
+      fontWeight:'bold',
     },
 
     campoComTexto: {

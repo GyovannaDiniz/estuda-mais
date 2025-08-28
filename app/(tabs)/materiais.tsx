@@ -6,26 +6,26 @@ const {width, height} = Dimensions.get('window');
 
 export default function Materiais(){
     const listaConteudos = [
-        {id: 1, nome: 'Conjuntos'},
-        {id: 2, nome: 'Conjuntos Numericos'},
-        {id: 3, nome: 'Funções'},
-        {id: 4, nome: 'Função Afim'},
-        {id: 5, nome: 'Função Quadrátrica'},
-        {id: 6, nome: 'Função Modular'},
-        {id: 7, nome: 'Funções Exponencial'},
-        {id: 8, nome: 'Logaritmo e Função Logarítmica'},
-        {id: 9, nome: 'Sequências Númericas'},
-        {id: 10, nome: 'Trigonometria'},
-        {id: 11, nome: 'Matrizes'},
-        {id: 12, nome: 'Sistemas Lineares'},
-        {id: 13, nome: 'Geometria Plana'},
-        {id: 14, nome: 'Geometria Espacial'},
-        {id: 15, nome: 'Análise Combinatória, Probabilide e Tratamento da Informação'},
-        {id: 16, nome: 'Matemática Financeira'},
-        {id: 17, nome: 'Estatística Básica'},
-        {id: 18, nome: 'Geometria Analítica'},
-        {id: 19, nome: 'Circunferência'},
-        {id: 20, nome: 'Crônicas'},
+        {id: 1, nome: '1. Conjuntos'},
+        {id: 2, nome: '2. Conjuntos Numericos'},
+        {id: 3, nome: '3. Funções'},
+        {id: 4, nome: '4. Função Afim'},
+        {id: 5, nome: '5. Função Quadrátrica'},
+        {id: 6, nome: '6. Função Modular'},
+        {id: 7, nome: '7. Funções Exponencial'},
+        {id: 8, nome: '8. Logaritmo e Função Logarítmica'},
+        {id: 9, nome: '9. Sequências Númericas'},
+        {id: 10, nome: '10. Trigonometria'},
+        {id: 11, nome: '11. Matrizes'},
+        {id: 12, nome: '12. Sistemas Lineares'},
+        {id: 13, nome: '13. Geometria Plana'},
+        {id: 14, nome: '14. Geometria Espacial'},
+        {id: 15, nome: '15. Análise Combinatória, Probabilide e Tratamento da Informação'},
+        {id: 16, nome: '16. Matemática Financeira'},
+        {id: 17, nome: '17. Estatística Básica'},
+        {id: 18, nome: '18. Geometria Analítica'},
+        {id: 19, nome: '19. Circunferência'},
+        {id: 20, nome: '20. Crônicas'},
     ];
     const listaMateriais = [
         { id: 1, nome: 'Vídeo aulas' },
@@ -45,7 +45,7 @@ export default function Materiais(){
     );
         
     const accordions = listaMateriais.map(item =>
-        <Accordion key={item.id} estilo={styles.elementoAccordionInterno} titulo={item.nome} itens={conteudosAccordion} iconeAdicionar />
+        <Accordion key={item.id} estilo={styles.elementoAccordionInterno} iconeNaoAtivo titulo={item.nome} itens={conteudosAccordion} iconeAdicionar />
     );
     const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
     const conteudosText = conteudos.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
@@ -108,8 +108,9 @@ const styles = StyleSheet.create({
         width: width * 0.8,
         marginTop: height * 0.001,
         justifyContent: "center",  
-        paddingRight: 15,
-        alignItems: 'center'
+        paddingRight: 25,
+        alignItems: 'center', 
+        paddingLeft: width * 0.02, 
     },
     textoAccordionInterno: {
         flexDirection: 'row',//
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
         height: height * 0.07,
         width: width * 0.8,
         justifyContent: 'center',
-        paddingLeft: width * 0.01, //mudei para ficar mais proximo da barrinha esquerda 
+        paddingLeft: width * 0.04, //mudei para ficar mais proximo da barrinha esquerda 
     }, 
     mainContent: {
 
