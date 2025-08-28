@@ -9,17 +9,25 @@ export default function TabRootLayout() {
         name="index"
         options={{
           headerShown: false, //diz para o Stack.Navigator(usei o Stack, pois é um atalho do expo-router) não mostrar a barra superior (header).
-          title: 'splash screen'
+          title: 'splash screen',
+          tabBarActiveTintColor:'pink',
+          tabBarInactiveTintColor:'white',
         }}
       />      
       <Tabs.Screen
         name="cadastro"
-        options={{headerShown: false}}
+        options={{
+          headerShown: false,
+          tabBarActiveTintColor:'pink',
+          tabBarInactiveTintColor:'white',
+        }}
       />
       <Tabs.Screen
         name="login"
         options={{
           headerShown: false,
+          tabBarActiveTintColor:'pink',
+          tabBarInactiveTintColor:'white',
         }}
       />
       <Tabs.Screen
