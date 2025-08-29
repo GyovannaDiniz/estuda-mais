@@ -64,6 +64,7 @@ export default function Materiais(){
                                 key={item.id}
                                 estilo={styles.elementoAccordion}
                                 titulo={item.nome}
+                                textStyle={styles.textoTituloAccordion}
                                 itens={accordions}
                                 
                             />
@@ -98,7 +99,8 @@ const styles = StyleSheet.create({
         marginTop: height * 0.02,
         justifyContent: "center",  
         paddingRight: 15,
-        alignItems: 'center'
+        alignItems: 'center', 
+        
     },
     elementoAccordionInterno: {
         flexDirection: 'row',
@@ -128,5 +130,11 @@ const styles = StyleSheet.create({
     },
     listaConteudos: {
 
-    }
+    },
+    textoTituloAccordion: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#000'
+}
+
 })

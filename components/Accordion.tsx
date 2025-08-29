@@ -23,7 +23,7 @@ const Accordion = (props) => {
     return (
     <View>
         <TouchableOpacity style={estilo} onPress={alternarVisibilidade}>
-            <Text style={[styles.accordionText, {color: corTexto || 'black'}]}>{titulo}</Text>
+            <Text style={[styles.accordionText, {color: corTexto || 'black'} , styles.tituloTexto, props.textStyle]}>{titulo}</Text>
             { iconeAdicionar ? 
                 <FontAwesome6 name="add" size={15} color="black" />
                 : false

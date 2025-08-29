@@ -11,7 +11,7 @@ export default function cadastro(){
     return (
         <View style={styles.container}>
             <View style={styles.circulo}>
-                 <Text style={styles.titulo}>Cadastro</Text>
+                 <Text style={styles.titulo}>Cadastre-se</Text>
             <View style={styles.campoComIcone}>
                 <Image 
                     source={require('@/assets/images/userNome.png')}
