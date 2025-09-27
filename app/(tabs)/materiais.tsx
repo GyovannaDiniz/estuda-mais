@@ -1,10 +1,39 @@
 import Accordion from "@/components/Accordion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 const {width, height} = Dimensions.get('window');
 
 export default function Materiais(){
+const [materiais, setMateriais] = useState([]);
+const [tipo, setTipo] = useState([]);
+const [conteudo, setConteudo] = useState([]);
+
+  useEffect(() => {
+    const fetchMateriais = async () => {
+      const response = await fetch('https://organic-space-happiness-6956749v45w92rjgv-3000.app.github.dev/api/material');
+      const data = await response.json();
+      setMateriais(data);
+    }
+
+    const fetchTipo = async () => {
+      const response = await fetch('https://organic-space-happiness-6956749v45w92rjgv-3000.app.github.dev/api/tipo');
+      const data = await response.json();
+      setTipo(data);
+    }
+
+    const fetchConteudo = async () => {
+      const response = await fetch('https://organic-space-happiness-6956749v45w92rjgv-3000.app.github.dev/conteudo');
+      const data = await response.json();
+      setConteudo(data);
+    }
+
+    fetchConteudo();
+    fetchTipo();
+    fetchMateriais();
+  }, [])
+
+
     const listaConteudos = [
         {id: 1, nome: '1. Conjuntos'},
         {id: 2, nome: '2. Conjuntos Numericos'},
@@ -27,24 +56,13 @@ export default function Materiais(){
         {id: 19, nome: '19. Circunferência'},
         {id: 20, nome: '20. Crônicas'},
     ];
-    const listaMateriais = [
-        { id: 1, nome: 'Vídeo aulas' },
-        { id: 2, nome: 'Resumos' },
-        { id: 3, nome: 'Listas de exercícios' },
-    ];  
-    const listaLinks = [
-        { id: 1, nome: 'Link com o Professor fulano' },
-        { id: 2, nome: 'Link com o Professor sicrano' },
-        { id: 3, nome: 'Link com o Professor antonio' },
-    ];
-    
-    
 
-    const conteudosAccordion = listaLinks.map((item, index) => 
-        <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.nome} corTexto='#002AFF' iconeRemover />
+
+    const conteudosAccordion = materiais.map((item, index) => 
+        <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.link} corTexto='#002AFF' iconeRemover />
     );
         
-    const accordions = listaMateriais.map(item =>
+    const accordions = tipo.map(item =>
         <Accordion key={item.id} estilo={styles.elementoAccordionInterno} iconeNaoAtivo titulo={item.nome} itens={conteudosAccordion} iconeAdicionar />
     );
     const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
