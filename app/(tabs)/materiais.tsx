@@ -11,19 +11,19 @@ const [conteudo, setConteudo] = useState([]);
 
   useEffect(() => {
     const fetchMateriais = async () => {
-      const response = await fetch('https://organic-space-happiness-6956749v45w92rjgv-3000.app.github.dev/api/material');
+      const response = await fetch('https://hmrq0gr4-3000.devtunnels.ms/api/material');
       const data = await response.json();
       setMateriais(data);
     }
 
     const fetchTipo = async () => {
-      const response = await fetch('https://organic-space-happiness-6956749v45w92rjgv-3000.app.github.dev/api/tipo');
+      const response = await fetch('https://hmrq0gr4-3000.devtunnels.ms/api/tipo');
       const data = await response.json();
       setTipo(data);
     }
 
     const fetchConteudo = async () => {
-      const response = await fetch('https://organic-space-happiness-6956749v45w92rjgv-3000.app.github.dev/conteudo');
+      const response = await fetch('https://hmrq0gr4-3000.devtunnels.ms/api/conteudo');
       const data = await response.json();
       setConteudo(data);
     }
@@ -34,28 +34,7 @@ const [conteudo, setConteudo] = useState([]);
   }, [])
 
 
-    const listaConteudos = [
-        {id: 1, nome: '1. Conjuntos'},
-        {id: 2, nome: '2. Conjuntos Numericos'},
-        {id: 3, nome: '3. Funções'},
-        {id: 4, nome: '4. Função Afim'},
-        {id: 5, nome: '5. Função Quadrátrica'},
-        {id: 6, nome: '6. Função Modular'},
-        {id: 7, nome: '7. Funções Exponencial'},
-        {id: 8, nome: '8. Logaritmo e Função Logarítmica'},
-        {id: 9, nome: '9. Sequências Númericas'},
-        {id: 10, nome: '10. Trigonometria'},
-        {id: 11, nome: '11. Matrizes'},
-        {id: 12, nome: '12. Sistemas Lineares'},
-        {id: 13, nome: '13. Geometria Plana'},
-        {id: 14, nome: '14. Geometria Espacial'},
-        {id: 15, nome: '15. Análise Combinatória, Probabilide e Tratamento da Informação'},
-        {id: 16, nome: '16. Matemática Financeira'},
-        {id: 17, nome: '17. Estatística Básica'},
-        {id: 18, nome: '18. Geometria Analítica'},
-        {id: 19, nome: '19. Circunferência'},
-        {id: 20, nome: '20. Crônicas'},
-    ];
+    
 
 
     const conteudosAccordion = materiais.map((item, index) => 
@@ -66,7 +45,7 @@ const [conteudo, setConteudo] = useState([]);
         <Accordion key={item.id} estilo={styles.elementoAccordionInterno} iconeNaoAtivo titulo={item.nome} itens={conteudosAccordion} iconeAdicionar />
     );
     const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
-    const conteudosText = conteudos.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
+    const conteudosText = conteudo.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
 
     return(
         <View style={styles.container}>
@@ -77,7 +56,7 @@ const [conteudo, setConteudo] = useState([]);
             <ScrollView>
                 <View style={styles.mainContent}>
                     <View style={styles.listaConteudos}>
-                        {listaConteudos.map((item, index) => (
+                        {conteudo.map((item, index) => (
                             <Accordion
                                 key={item.id}
                                 estilo={styles.elementoAccordion}
