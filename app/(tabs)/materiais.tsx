@@ -11,19 +11,19 @@ const [conteudo, setConteudo] = useState([]);
 
   useEffect(() => {
     const fetchMateriais = async () => {
-      const response = await fetch('https://hmrq0gr4-3000.devtunnels.ms/api/material');
+      const response = await fetch('https://rdbxsxfk-3000.brs.devtunnels.ms/api/material');
       const data = await response.json();
       setMateriais(data);
     }
 
     const fetchTipo = async () => {
-      const response = await fetch('https://hmrq0gr4-3000.devtunnels.ms/api/tipo');
+      const response = await fetch('https://rdbxsxfk-3000.brs.devtunnels.ms/api/tipo');
       const data = await response.json();
       setTipo(data);
     }
 
     const fetchConteudo = async () => {
-      const response = await fetch('https://hmrq0gr4-3000.devtunnels.ms/api/conteudo');
+      const response = await fetch('https://rdbxsxfk-3000.brs.devtunnels.ms/api/conteudo');
       const data = await response.json();
       setConteudo(data);
     }
