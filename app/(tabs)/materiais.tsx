@@ -11,19 +11,19 @@ const [conteudo, setConteudo] = useState([]);
 
   useEffect(() => {
     const fetchMateriais = async () => {
-      const response = await fetch('https://rdbxsxfk-3000.brs.devtunnels.ms/api/material');
+      const response = await fetch('https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/material');
       const data = await response.json();
       setMateriais(data);
     }
 
     const fetchTipo = async () => {
-      const response = await fetch('https://rdbxsxfk-3000.brs.devtunnels.ms/api/tipo');
+      const response = await fetch('https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/tipo');
       const data = await response.json();
       setTipo(data);
     }
 
     const fetchConteudo = async () => {
-      const response = await fetch('https://rdbxsxfk-3000.brs.devtunnels.ms/api/conteudo');
+      const response = await fetch('https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/conteudo');
       const data = await response.json();
       setConteudo(data);
     }
@@ -35,15 +35,32 @@ const [conteudo, setConteudo] = useState([]);
 
 
     
-
+    const filtrarMateriaisPorTipo = (idConteudo, idTipo) => {
+        const materiaisFiltrado = materiais.rows.filter(m => m.idconteudo == idConteudo && m.idtipo == idTipo);
+        console.log(materiais.rows, idConteudo, idTipo, materiaisFiltrado);
+        return materiaisFiltrado;
+    }
 
     const conteudosAccordion = materiais.map((item, index) => 
         <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.link} corTexto='#002AFF' iconeRemover />
     );
         
-    const accordions = tipo.map(item =>
-        <Accordion key={item.id} estilo={styles.elementoAccordionInterno} iconeNaoAtivo titulo={item.nome} itens={conteudosAccordion} iconeAdicionar />
-    );
+    
+    const accordions = (idConteudo) => tipo.map(item => (
+    <Accordion
+        key={item.id}
+        estilo={styles.elementoAccordionInterno}
+        iconeNaoAtivo
+        titulo={item.nome}
+        itens={filtrarMateriaisPorTipo(idConteudo, item.id).map(m => (
+            <a href={m.link} target="_blank">{m.descricao}</a>
+        ))}
+        iconeRemover
+    />
+));
+
+
+
     const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
     const conteudosText = conteudo.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
 
@@ -62,7 +79,7 @@ const [conteudo, setConteudo] = useState([]);
                                 estilo={styles.elementoAccordion}
                                 titulo={item.nome}
                                 textStyle={styles.textoTituloAccordion}
-                                itens={accordions}
+                                itens={accordions(item.id)}
                                 
                             />
                         
