@@ -1,6 +1,6 @@
 import Accordion from "@/components/Accordion";
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, Text, View, Linking  } from "react-native";
 
 const {width, height} = Dimensions.get('window');
 
@@ -36,27 +36,26 @@ const [conteudo, setConteudo] = useState([]);
 
     
     const filtrarMateriaisPorTipo = (idConteudo, idTipo) => {
-        const materiaisFiltrado = materiais.rows.filter(m => m.idconteudo == idConteudo && m.idtipo == idTipo);
-        console.log(materiais.rows, idConteudo, idTipo, materiaisFiltrado);
+        const materiaisFiltrado = materiais.filter(m => m.idconteudo == idConteudo && m.idtipo == idTipo);
+        console.log(materiais.filter, idConteudo, idTipo, materiaisFiltrado);
         return materiaisFiltrado;
     }
 
     const conteudosAccordion = materiais.map((item, index) => 
-        <Accordion key={item.id} estilo={styles.textoAccordionInterno} titulo={item.link} corTexto='#002AFF' iconeRemover />
+        <Accordion key={item} estilo={styles.textoAccordionInterno} titulo={item.link} corTexto='#002AFF' iconeRemover />
     );
         
     
     const accordions = (idConteudo) => tipo.map(item => (
-    <Accordion
-        key={item.id}
-        estilo={styles.elementoAccordionInterno}
-        iconeNaoAtivo
-        titulo={item.nome}
-        itens={filtrarMateriaisPorTipo(idConteudo, item.id).map(m => (
-            <a href={m.link} target="_blank">{m.descricao}</a>
-        ))}
-        iconeRemover
-    />
+        <Accordion
+            key={item.id}
+            estilo={styles.elementoAccordionInterno}
+            titulo={item.nome}
+            itens={filtrarMateriaisPorTipo(idConteudo, item.id).map(m => (
+                <Text onPress={() => Linking.openURL(m.link)}> {m.descricao}</Text>
+            ))}
+        iconeAdicionar
+        />
 ));
 
 
