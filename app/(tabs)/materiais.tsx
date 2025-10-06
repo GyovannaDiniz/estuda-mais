@@ -41,9 +41,7 @@ const [conteudo, setConteudo] = useState([]);
         return materiaisFiltrado;
     }
 
-    const conteudosAccordion = materiais.map((item, index) => 
-        <Accordion key={item} estilo={styles.textoAccordionInterno} titulo={item.link} corTexto='#002AFF' iconeRemover />
-    );
+    
         
     
     const accordions = (idConteudo) => tipo.map(item => (
@@ -52,16 +50,18 @@ const [conteudo, setConteudo] = useState([]);
             estilo={styles.elementoAccordionInterno}
             titulo={item.nome}
             itens={filtrarMateriaisPorTipo(idConteudo, item.id).map(m => (
-                <Text onPress={() => Linking.openURL(m.link)}> {m.descricao}</Text>
+                 <Accordion
+                    key={m.id || index}
+                    estilo={styles.textoAccordionInterno}
+                    titulo={m.descricao}
+                    corTexto="#002AFF"
+                    iconeRemover   
+                    onPress={() => Linking.openURL(m.link)}
+                />
             ))}
         iconeAdicionar
         />
 ));
-
-
-
-    const conteudos = ["Conteúdo 1", "Conteúdo 2", "Conteúdo 3"]
-    const conteudosText = conteudo.map((item, index) => <Text style={styles.elementoAccordion}>{item}</Text>)
 
     return(
         <View style={styles.container}>
@@ -79,9 +79,9 @@ const [conteudo, setConteudo] = useState([]);
                                 titulo={item.nome}
                                 textStyle={styles.textoTituloAccordion}
                                 itens={accordions(item.id)}
-                                
+                                 
                             />
-                        
+                       
                         ))}
                     </View>
                 </View>
@@ -127,23 +127,19 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         paddingLeft: width * 0.02, 
     },
+
     textoAccordionInterno: {
-        flexDirection: 'row',//
-        paddingRight: 15,//
-        alignItems:'center',//
+        flexDirection: 'row',
+        alignItems: 'center',
         backgroundColor: '#F3B6B6',
         borderRadius: width * 0.2,
-        height: height * 0.07,
+        minHeight: height * 0.07,  // altura mínima
         width: width * 0.8,
-        justifyContent: 'center',
-        paddingLeft: width * 0.04, //mudei para ficar mais proximo da barrinha esquerda 
-    }, 
-    mainContent: {
-
+        justifyContent: 'flex-start', // centralizar horizontalmente
+        paddingHorizontal: width * 0.04,
+        flexWrap: 'wrap',  // permite quebra de linha
     },
-    listaConteudos: {
-
-    },
+   
     textoTituloAccordion: {
     fontSize: 15,
     fontWeight: 'bold',
