@@ -52,7 +52,16 @@ export default function TabRootLayout() {
                 <MaterialCommunityIcons name="book-open-page-variant-outline" size={size} color="white" />
           ),
         }}
-      />      
+      />     
+
+      <Tabs.Screen
+        name="adicionar"
+        options={{
+          headerShown: false,
+          title:"adicionar",
+        
+        }} 
+      />
     </Tabs>
 
   );
