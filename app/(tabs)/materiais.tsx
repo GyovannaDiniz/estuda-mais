@@ -1,6 +1,6 @@
 import Accordion from "@/components/Accordion";
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image, ScrollView, StyleSheet, Text, View, Linking  } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, View, Linking  } from "react-native";
 
 const {width, height} = Dimensions.get('window');
 
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     elementoAccordion: {
         flexDirection: 'row',
         backgroundColor: '#FEADA6',
-        borderRadius: width * 0.2,
+        borderRadius: width * 0.03,
         height: height * 0.07,
         width: width * 0.8,
         marginTop: height * 0.02,
@@ -118,25 +118,26 @@ const styles = StyleSheet.create({
     elementoAccordionInterno: {
         flexDirection: 'row',
         backgroundColor: '#FEDBD8',
-        borderRadius: width * 0.2,
+        borderRadius: width * 0.02,
         height: height * 0.07,
         width: width * 0.8,
-        marginTop: height * 0.001,
+        marginTop: 0.2,
         justifyContent: "center",  
         paddingRight: 25,
         alignItems: 'center', 
         paddingLeft: width * 0.02, 
+     
     },
 
     textoAccordionInterno: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#F3B6B6',
-        borderRadius: width * 0.2,
+        backgroundColor: '#FEDBD8',
+        borderRadius: width * 0.01,
         minHeight: height * 0.07,  // altura mínima
         width: width * 0.8,
         justifyContent: 'flex-start', // centralizar horizontalmente
-        paddingHorizontal: width * 0.04,
+        paddingHorizontal: width * 0.04 ,
         flexWrap: 'wrap',  // permite quebra de linha
     },
    

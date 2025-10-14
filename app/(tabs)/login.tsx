@@ -98,7 +98,7 @@ const Styles = StyleSheet.create ({
       backgroundColor: '#F7FAFB',
       borderColor: '#C1C1C1', //cor da borda
       borderWidth: width * 0.001, //tamanho da borda dentro
-      borderRadius: width * 0.1,
+      borderRadius: width * 0.03,
       height: height * 0.06,
       width: width * 0.6, //0.6
       paddingHorizontal: width * 0.04,
@@ -120,7 +120,7 @@ const Styles = StyleSheet.create ({
     botao: {
       backgroundColor:'#FEADA6',
       padding: 10,
-      borderRadius:  height * 0.2,
+      borderRadius:  height * 0.02,
       borderWidth: width * 0.001,
       borderColor:'#C1C1C1',
       marginHorizontal: width * 0.05,

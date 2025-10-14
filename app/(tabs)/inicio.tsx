@@ -57,7 +57,7 @@ const styles = StyleSheet.create ({
         backgroundColor: '#FEADA6',
         borderColor: '#000', //cor da borda
         borderWidth: width * 0.004, //tamanho da borda dentro
-        borderRadius: width * 0.06,
+        borderRadius: width * 0.03,
         height: height * 0.2,
         width: width * 0.8, //0.6
         paddingHorizontal: width * 0.1,

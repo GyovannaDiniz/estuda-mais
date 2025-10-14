@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     botao: {
         backgroundColor:'#FAD0C4',
         padding: 10,
-        borderRadius:  height * 0.5,
+        borderRadius:  height * 0.02,
         borderWidth: width * 0.001,
         borderColor:'#C1C1C1',
         marginHorizontal: width * 0.05,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#F7FAFB',
-        borderRadius: width * 0.1,
+        borderRadius: width * 0.03,
         height: height * 0.06,
         paddingHorizontal: width * 0.04,
         marginBottom: height * 0.02,

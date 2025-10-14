@@ -1,74 +1,81 @@
-import React, {useState} from 'react';
-import { Dimensions, StyleSheet,Image, Text, TextInput, View } from 'react-native';
+import React from 'react';
+import { Dimensions, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
-const {width, height } = Dimensions.get('window');
-
-
+const { width, height } = Dimensions.get('window');
 
 export default function Login() {
-
-    return(
+    return (
         <View style={styles.container}> 
             <Image 
                 source={require('@/assets/images/logoEstuda.png')}
                 style={styles.imagem}
             />
 
-          <Text style={styles.introducao}> Adicionar Vídeos aulas: </Text>
-            <Text style={styles.titulo}> Nome </Text>
-            <TextInput 
-                style={styles.campo}
-                placeholderTextColor={'#000'}
-                placeholder='------'    
-            />
+            {/* Título "Adicionar Vídeos Aulas" separado */}
+            <Text style={styles.introducao}>Adicionar Vídeos Aulas:</Text>
 
-            <Text style={styles.titulo}> Link </Text>
-            <TextInput
-                style={styles.campo}
-                placeholderTextColor={'#000'}
-                placeholder='------'
-            />
+            {/* Campo de Nome */}
+            <View style={styles.inputContainer}>
+                <Text style={styles.titulo}>Nome</Text>
+                <TextInput 
+                    style={styles.campo}
+                    placeholderTextColor={'#FEDBD8'}
+                    placeholder='------'    
+                />
+            </View>
 
+            {/* Campo de Link */}
+            <View style={styles.inputContainer}>
+                <Text style={styles.titulo}>Link</Text>
+                <TextInput
+                    style={styles.campo}
+                    placeholderTextColor={'#FEDBD8'}
+                    placeholder='------'
+                />
+            </View>
         </View>
     );
-
 }
 
-const styles = StyleSheet.create ({
-
-    container:{
-         flex: 1, // ocupa toda a tela
-        justifyContent: 'flex-start', // centraliza verticalmente
-        alignItems: 'center',     // centraliza horizontalmente
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'flex-start', 
+        alignItems: 'center',     
         backgroundColor: '#fff',
+        paddingTop: 20, 
     },
 
     imagem: {
-        width:width * 0.7,
-        height: height * 0.2 
+        width: width * 0.7,
+        height: height * 0.2,
+        marginBottom: height * 0.05, 
     },
 
     introducao: {
-        justifyContent:'flex-start',
-        fontSize: 15,
+        fontSize: 18,
         color: '#000',
+        fontWeight: 'bold',
+        marginBottom: height * 0.03, 
+        paddingRight: width * 0.3,
+    },
+    inputContainer: {
+        width: width * 0.8,
+        marginBottom: height * 0.02, 
     },
 
     titulo: {
-
+        fontSize: 16,
+        color: '#000',
+        marginBottom: 5,
     },
 
-
     campo: {
-        flexDirection: 'row',
         backgroundColor: '#FEADA6',
-        borderRadius: width * 0.2,
+        borderRadius: width * 0.03,
         height: height * 0.08,
-        width: width * 0.8,
-        marginTop: height * 0.05,
-         textAlign: 'center',
-        paddingRight: 15,
-        
+        width: '100%',
+        textAlign: 'center',
+        fontSize: 16, 
     }
-
- })
+});
