@@ -11,10 +11,10 @@ export default function Login() {
                 style={styles.imagem}
             />
 
-            {/* Título "Adicionar Vídeos Aulas" separado */}
-            <Text style={styles.introducao}>Adicionar Vídeos Aulas:</Text>
+            
+            <Text style={styles.introducao}>Adicionar Resumos:</Text>
 
-            {/* Campo de Nome */}
+          
             <View style={styles.inputContainer}>
                 <Text style={styles.titulo}>Nome</Text>
                 <TextInput 
@@ -24,7 +24,6 @@ export default function Login() {
                 />
             </View>
 
-            {/* Campo de Link */}
             <View style={styles.inputContainer}>
                 <Text style={styles.titulo}>Link</Text>
                 <TextInput
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
         color: '#000',
         fontWeight: 'bold',
         marginBottom: height * 0.03, 
-        paddingRight: width * 0.3,
+        paddingRight: width * 0.4,
     },
     inputContainer: {
         width: width * 0.8,
