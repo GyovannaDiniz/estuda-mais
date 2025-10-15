@@ -78,6 +78,14 @@ export default function TabRootLayout() {
           title: "adicionarR"
         }}
       />
+
+      <Tabs.Screen 
+        name="simulados"
+        options={{
+          headerShown: false,
+          title: "simulados"
+        }}
+      />
     </Tabs>
 
   );

@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 
     imagem: {
         width: width * 0.7,
-        height: height * 0.2,
+        height: height * 0.2,        
     },
 
     elementoAccordion: {
