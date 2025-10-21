@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimensions, Image, StyleSheet, Text, View, TouchableOpacity, GestureResponderEvent } from 'react-native';
+import { Link } from 'expo-router';
 
 const {width, height} = Dimensions.get('window');
 
@@ -15,20 +16,26 @@ export default function inicio() {
             source={require('@/assets/images/logoEstuda.png')}
             style={[styles.imagem, { resizeMode: 'contain' }]}
             />
-            <TouchableOpacity style={styles.campoComIcone} onPress={materiaisClick}>
-                <Text style={styles.texto}>Materiais</Text>
-                <Image 
-                source={require('@/assets/images/material.png')}
-                style={styles.iconeDentro}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.campoComIcone}>
-                <Text style={styles.texto}>Simulados</Text>
-                <Image
-                source={require('@/assets/images/simulados.png')}
-                style={styles.iconeDentro}
-            />
-            </TouchableOpacity>
+
+                <Link href="/materiais" asChild>
+                    <TouchableOpacity style={styles.campoComIcone} onPress={materiaisClick}>
+                        <Text style={styles.texto}>Materiais</Text>
+                            <Image 
+                                source={require('@/assets/images/material.png')}
+                                style={styles.iconeDentro}
+                            />
+                    </TouchableOpacity>
+                </Link>
+
+                <Link href="/simulados" asChild>
+                    <TouchableOpacity style={styles.campoComIcone}>
+                        <Text style={styles.texto}>Simulados</Text>
+                            <Image
+                                source={require('@/assets/images/simulados.png')}
+                                style={styles.iconeDentro}
+                            />
+                    </TouchableOpacity>
+                </Link>
         </View>
     );
   

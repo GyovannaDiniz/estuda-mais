@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-
+import { Link } from 'expo-router';
 const {width, height } = Dimensions.get('window');
 
 export default function Login() {
@@ -40,9 +40,12 @@ export default function Login() {
       />
         </View>
       </View>
+
+      <Link href="/inicio" asChild>
         <TouchableOpacity style={Styles.botao} onPress={() => console.log('clicado')}>
               <Text style={Styles.texto}>Entrar</Text>
         </TouchableOpacity>
+      </Link>
 
           <View style={Styles.linhaComTexto}>
             <View style={Styles.linha} />

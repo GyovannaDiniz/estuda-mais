@@ -1,6 +1,6 @@
 import { Button } from '@react-navigation/elements';
 import React from 'react';
-import {Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View, Image} from 'react-native';
 
 
 
@@ -15,6 +15,7 @@ export default function Login() {
             />
         <ScrollView>
             <View style={styles.inputContainer}>
+               
                 <Text style={styles.texto}>
                     45 questões de matemática e suas tecnologias
                 </Text>
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
         width: width * 0.2,
         height: height * 0.05,
         borderRadius: width * 0.02,
-        marginRight: width * 0.03,   
+        marginRight: width * 0.01,   
         alignSelf: 'flex-end',
         justifyContent: 'center',
         alignItems: 'center',

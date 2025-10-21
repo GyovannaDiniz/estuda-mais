@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Link } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
@@ -55,9 +56,13 @@ export default function cadastro(){
                     onChangeText={(setSenha)}
                 />              
             </View>
-                <TouchableOpacity style={styles.botao} onPress={() => console.log('clicado')}>
-                    <Text style={styles.texto}>Cadastre-se</Text>
-                </TouchableOpacity>
+               
+                <Link href="/inicio" asChild>
+                    <TouchableOpacity style={styles.botao} onPress={() => console.log('clicado')}>
+                        <Text style={styles.texto}>Cadastre-se</Text>
+                    </TouchableOpacity>
+                </Link>
+
             <View style={styles.linhaComTexto}>
                 <View style={styles.linha}/>
                 <Text style={styles.ou}>OU</Text>
