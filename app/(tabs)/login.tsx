@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+//import * as Google from 'expo-auth-session/providers/google';
+//import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
+//import styles from './style';
+//import { auth } from '../../firebaseConfig';
 import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Link } from 'expo-router';
 const {width, height } = Dimensions.get('window');
