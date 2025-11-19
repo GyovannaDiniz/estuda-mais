@@ -55,28 +55,12 @@ export default function TabRootLayout() {
       />     
 
       <Tabs.Screen
-        name="adicionarVA"
+        name="adicionar"
         options={{
           headerShown: false,
           title:"adicionarVA",
         
         }} 
-      />
-
-      <Tabs.Screen
-        name="adicionarLE"
-        options={{
-          headerShown: false,
-          title: "adicionarLE"
-        }}
-      />
-
-      <Tabs.Screen
-        name="adicionarR"
-        options={{
-          headerShown: false,
-          title: "adicionarR"
-        }}
       />
 
       <Tabs.Screen 

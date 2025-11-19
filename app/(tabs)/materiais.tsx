@@ -1,6 +1,6 @@
 import Accordion from "@/components/Accordion";
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image, ScrollView, StyleSheet, View, Linking  } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, View, Linking, Link  } from "react-native";
 
 const {width, height} = Dimensions.get('window');
 
@@ -50,6 +50,7 @@ const [conteudo, setConteudo] = useState([]);
             estilo={styles.elementoAccordionInterno}
             titulo={item.nome}
             itens={filtrarMateriaisPorTipo(idConteudo, item.id).map(m => (
+                
                  <Accordion
                     key={m.id || index}
                     estilo={styles.textoAccordionInterno}
@@ -58,8 +59,9 @@ const [conteudo, setConteudo] = useState([]);
                     iconeRemover   
                     onPress={() => Linking.openURL(m.link)}
                 />
+                
             ))}
-        iconeAdicionar
+       
         />
 ));
 
@@ -79,7 +81,10 @@ const [conteudo, setConteudo] = useState([]);
                                 titulo={item.nome}
                                 textStyle={styles.textoTituloAccordion}
                                 itens={accordions(item.id)}
-                                 
+                                iconeAdicionar
+                                onAddPress={() => {
+                                   <Link href='/adiconar' asChild/>
+                                }}
                             />
                        
                         ))}

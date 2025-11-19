@@ -1,6 +1,7 @@
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import React, { useState } from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Link } from 'expo-router';
 
 const {width, height} = Dimensions.get('window');
 
@@ -13,6 +14,7 @@ const Accordion = (props) => {
     const iconeRemover = false || props.iconeRemover;
     const corTexto = props.corTexto; 
     const onPress = props.onPress;
+    
 
     const [exibirLista, setExibirLista] = useState(false);
 
@@ -25,14 +27,16 @@ const Accordion = (props) => {
     <View>
         <TouchableOpacity style={estilo} onPress={onPress || alternarVisibilidade}>
             <Text style={[styles.accordionText, {color: corTexto || 'black'} , props.textStyle]}>{titulo}</Text>
-            { iconeAdicionar ? 
-                <FontAwesome6 name="add" size={15} color="black" />
-                : false
-            }
-              { iconeRemover ? 
-                <FontAwesome6 name="trash-can" size={15} color="black" />
-                : false
-            }
+            { iconeAdicionar && (
+                <TouchableOpacity onPress={props.onAddPress}>
+                    <FontAwesome6 name="add" size={22} color="black" />
+                </TouchableOpacity>
+            )}
+            { iconeRemover && (
+                <TouchableOpacity onPress={props.onRemovePress}>
+                    <FontAwesome6 name="trash-can" size={15} color="black" />
+                </TouchableOpacity>
+            )}
             
             
         </TouchableOpacity>

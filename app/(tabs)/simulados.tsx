@@ -1,6 +1,6 @@
 import { Button } from '@react-navigation/elements';
 import React from 'react';
-import {Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View, Image} from 'react-native';
+import {Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 
 
 
