@@ -1,9 +1,14 @@
-import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, Image, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { Link } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
-export default function Login() {
+export default function adicionar() {
+    const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState(null); 
+
     return (
         <View style={styles.container}> 
             <Image 
@@ -11,28 +16,67 @@ export default function Login() {
                 style={styles.imagem}
             />
 
-           
-            <Text style={styles.introducao}>Adicionar Vídeos Aulas:</Text>
+            <Text style={styles.introducao}>Adicionar Material:</Text>
 
-          
+            <TouchableOpacity 
+                style={styles.dropdown}
+                onPress={() => setOpen(!open)}
+            >
+                <Text style={styles.dropdownTexto}>Tipo</Text>
+                <Ionicons name={open ? "chevron-up" : "chevron-down"} size={24} color="#000" />
+            </TouchableOpacity>
+
+            {open && (
+                <View style={styles.dropdownArea}>
+                    <TouchableOpacity 
+                        style={styles.item}
+                        onPress={() => setSelected(selected === "videos" ? null : "videos")}
+                    >
+                        <Text style={styles.checkbox}>{selected === "videos" ? "☑" : "☐"}</Text>
+                        <Text style={styles.itemTxt}>Vídeos Aulas</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        style={styles.item}
+                        onPress={() => setSelected(selected === "lista" ? null : "lista")}
+                    >
+                        <Text style={styles.checkbox}>{selected === "lista" ? "☑" : "☐"}</Text>
+                        <Text style={styles.itemTxt}>Lista de exercícios</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        style={styles.item}
+                        onPress={() => setSelected(selected === "resumo" ? null : "resumo")}
+                    >
+                        <Text style={styles.checkbox}>{selected === "resumo" ? "☑" : "☐"}</Text>
+                        <Text style={styles.itemTxt}>Resumos</Text>
+                    </TouchableOpacity>
+                </View>
+            )}
+
             <View style={styles.inputContainer}>
                 <Text style={styles.titulo}>Nome</Text>
                 <TextInput 
                     style={styles.campo}
-                    placeholderTextColor={'#FEDBD8'}
-                    placeholder='------'    
+                    placeholderTextColor={'#000'}
+                    placeholder='----------'    
                 />
             </View>
 
-            
             <View style={styles.inputContainer}>
                 <Text style={styles.titulo}>Link</Text>
                 <TextInput
                     style={styles.campo}
-                    placeholderTextColor={'#FEDBD8'}
-                    placeholder='------'
+                    placeholderTextColor={'#000'}
+                    placeholder='----------'
                 />
             </View>
+
+            <Link href="/" asChild>
+                <TouchableOpacity style={styles.botao}>
+                    <Text style={styles.botaoTxt}>salvar</Text>
+                </TouchableOpacity>
+            </Link>
         </View>
     );
 }
@@ -42,40 +86,89 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start', 
         alignItems: 'center',     
-        backgroundColor: '#fff',
-        paddingTop: 20, 
+        backgroundColor: '#F4F8FA',
+        paddingTop: 20
     },
-
     imagem: {
-        width: width * 0.7,
-        height: height * 0.2,
-        marginBottom: height * 0.05, 
+        width: width * 0.55,
+        height: height * 0.13,
+        marginBottom: height * 0.05
     },
-
     introducao: {
-        fontSize: 18,
+        fontSize: 20,
         color: '#000',
         fontWeight: 'bold',
-        marginBottom: height * 0.03, 
-        paddingRight: width * 0.3,
+        marginBottom: height * 0.03,
+        paddingRight: width * 0.3
+    },
+    dropdown: {
+        width: width * 0.8,
+        backgroundColor: '#F9A9A3',
+        padding: 15,
+        borderRadius: width * 0.04,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderWidth: width * 0.002,
+        marginBottom: 2
+    },
+    dropdownTexto: {
+        fontSize: 16,
+        color: '#000',
+        fontWeight: '600'
+    },
+    dropdownArea: {
+        width: width * 0.8,
+        backgroundColor: '#F9C9C5',
+        padding: 15,
+        borderRadius: width * 0.04,
+        borderWidth: width * 0.002,
+        marginTop: 1,
+        marginBottom: 10
+    },
+    item: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 8
+    },
+    checkbox: {
+        fontSize: 18,
+        marginRight: 10
+    },
+    itemTxt: {
+        fontSize: 16,
+        color: '#000'
     },
     inputContainer: {
         width: width * 0.8,
-        marginBottom: height * 0.02, 
+        marginBottom: 15
     },
-
     titulo: {
         fontSize: 16,
         color: '#000',
-        marginBottom: 5,
+        marginBottom: 5
     },
-
     campo: {
-        backgroundColor: '#FEADA6',
-        borderRadius: width * 0.03,
+        backgroundColor: '#F9A9A3',
+        borderRadius: width * 0.04,
         height: height * 0.08,
-        width: '100%',
+        width: width * 0.8,
         textAlign: 'center',
-        fontSize: 16, 
+        fontSize: 16,
+        borderWidth: width * 0.002,
+        borderColor: '#000'
+    },
+    botao: {
+        backgroundColor: '#F9A9A3',
+        paddingVertical: height * 0.014,
+        paddingHorizontal: width * 0.06,
+        borderRadius: width * 0.04,
+        borderWidth: width * 0.002,
+        borderColor: '#000',
+        marginTop: 20
+    },
+    botaoTxt: {
+        fontSize: 16,
+        fontWeight: 'bold'
     }
 });

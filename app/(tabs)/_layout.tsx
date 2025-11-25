@@ -58,7 +58,7 @@ export default function TabRootLayout() {
         name="adicionar"
         options={{
           headerShown: false,
-          title:"adicionarVA",
+          title:"adicionar",
         
         }} 
       />

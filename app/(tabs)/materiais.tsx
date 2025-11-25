@@ -1,6 +1,7 @@
 import Accordion from "@/components/Accordion";
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image, ScrollView, StyleSheet, View, Linking, Link  } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, View, Linking } from "react-native";
+
 
 const {width, height} = Dimensions.get('window');
 
@@ -83,7 +84,6 @@ const [conteudo, setConteudo] = useState([]);
                                 itens={accordions(item.id)}
                                 iconeAdicionar
                                 onAddPress={() => {
-                                   <Link href='/adiconar' asChild/>
                                 }}
                             />
                        

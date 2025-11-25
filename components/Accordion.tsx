@@ -28,9 +28,9 @@ const Accordion = (props) => {
         <TouchableOpacity style={estilo} onPress={onPress || alternarVisibilidade}>
             <Text style={[styles.accordionText, {color: corTexto || 'black'} , props.textStyle]}>{titulo}</Text>
             { iconeAdicionar && (
-                <TouchableOpacity onPress={props.onAddPress}>
-                    <FontAwesome6 name="add" size={22} color="black" />
-                </TouchableOpacity>
+                <Link href="/adicionar">
+                    <FontAwesome6 name="add" size={15} color="black" />
+                </Link>
             )}
             { iconeRemover && (
                 <TouchableOpacity onPress={props.onRemovePress}>
