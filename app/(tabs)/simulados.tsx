@@ -3,10 +3,6 @@ import { Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View
 
 const { width, height } = Dimensions.get('window');
 
- const simuladosClick = (e: GestureResponderEvent) => {
-        console.log("tocou em simulados");
-    };
-
 export default function simulados() {
     return (
         <View style={styles.container}>
@@ -24,7 +20,7 @@ export default function simulados() {
             </View>
 
             <ScrollView>
-                <TouchableOpacity style={styles.inputContainer} onPress={simuladosClick}>
+                <View style={styles.inputContainer}>
                     <View style={styles.linhaTitulo}>
                         <Image
                             source={require('@/assets/images/grafico-simulados.png')}
@@ -40,10 +36,10 @@ export default function simulados() {
                             <Text style={styles.textoBotao}>Iniciar</Text>
                         </TouchableOpacity>
                     </View>
-                </TouchableOpacity>
+                </View>
 
                 
-                <TouchableOpacity style={styles.inputContainer} onPress={simuladosClick}>
+                <View style={styles.inputContainer} >
                     <View style={styles.linhaTitulo}>
                         <Image
                             source={require('@/assets/images/grafico-simulados.png')}
@@ -58,13 +54,13 @@ export default function simulados() {
 
                     <View style={styles.areaBotao}>
                         <TouchableOpacity style={styles.botao} onPress={() => console.log('iniciar clicado')}>
-                            <Text style={styles.textoBotao}>Entrar</Text>
+                            <Text style={styles.textoBotao}>Iniciar</Text>
                         </TouchableOpacity>
                     </View>
 
-                </TouchableOpacity>
+                </View>
 
-                <TouchableOpacity style={styles.inputContainer} onPress={simuladosClick}>
+                <View style={styles.inputContainer}>
                     <View style={styles.linhaTitulo}>
                         <Image
                             source={require('@/assets/images/grafico-simulados.png')}
@@ -79,11 +75,11 @@ export default function simulados() {
 
                     <View style={styles.areaBotao}>
                         <TouchableOpacity style={styles.botao} onPress={() => console.log('iniciar clicado')}>
-                            <Text style={styles.textoBotao}>Entrar</Text>
+                            <Text style={styles.textoBotao}>Iniciar</Text>
                         </TouchableOpacity>
                     </View>
 
-                </TouchableOpacity>
+                </View>
 
             </ScrollView>
         </View>

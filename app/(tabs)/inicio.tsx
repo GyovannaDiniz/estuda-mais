@@ -9,6 +9,10 @@ export default function inicio() {
     const materiaisClick = (e: GestureResponderEvent) => {
         console.log("tocou em materiais");
     };
+
+    const simuladosClick = (e: GestureResponderEvent) => {
+            console.log("tocou em simulados");
+        };
   
     return(
         <View style={styles.container}>
@@ -28,7 +32,7 @@ export default function inicio() {
                 </Link>
 
                 <Link href="/simulados" asChild>
-                    <TouchableOpacity style={styles.campoComIcone}>
+                    <TouchableOpacity style={styles.campoComIcone} onPress={simuladosClick}>
                         <Text style={styles.texto}>Simulados</Text>
                             <Image
                                 source={require('@/assets/images/simulados.png')}
