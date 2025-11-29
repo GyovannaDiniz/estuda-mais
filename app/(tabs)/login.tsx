@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
+import { 
+  Dimensions, 
+  Image, 
+  StyleSheet, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  View, 
+  Alert 
+} from "react-native";
 import { router } from 'expo-router';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -9,45 +18,50 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function loginGoogle() {
-    console.log("Fazendo login com o google!")
-  }
+  // Validação de e-mail com @ e .com
+  const validarEmail = (text: string) => {
+    setEmail(text);
+    const emailValido = /\S+@\S+\.\S+/.test(text);
+    setEmailError(emailValido ? "" : "Email inválido (ex: usuario@gmail.com)");
+  };
 
+  // Login com email e senha
   async function loginEmailSenha() {
     if (!email || !senha) {
-      return Alert.alert("Erro", "Preencha email e senha.");
+      Alert.alert("Erro", "Preencha email e senha.");
+      return;
     }
 
-    console.log("Acabei de fazer login com o email e senha!");
+    if (emailError) {
+      Alert.alert("Erro", "Corrija o e-mail antes de continuar.");
+      return;
+    }
+
     setLoading(true);
 
     try {
-
-      const resp = await fetch("http://192.168.1.22:3000/api/login", {
+      const resp = await fetch("http://192.168.1.22:3000/api/aluno", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, senha })
+        body: JSON.stringify({ email: email.trim(), senha: senha.trim() })
       });
 
       const dados = await resp.json();
 
       if (!resp.ok) {
-        setLoading(false);
-        return Alert.alert("Erro", dados.error || "Erro no login");
+        Alert.alert("Erro", dados.error || "Erro ao fazer login");
+      } else {
+        await AsyncStorage.setItem("@user", JSON.stringify(dados.usuario));
+        router.push("/inicio");
       }
 
-      // salva usuário
-      await AsyncStorage.setItem("@user", JSON.stringify(dados.usuario));
-
-      setLoading(false);
- 
-      router.push("/inicio");
-
     } catch (error) {
-      setLoading(false);
       Alert.alert("Erro", "Falha ao conectar ao servidor.");
+    } finally {
+      setLoading(false); 
     }
   }
 
@@ -66,9 +80,13 @@ export default function Login() {
             placeholder="Email"
             placeholderTextColor={'#ccc'}
             value={email}
-            onChangeText={setEmail}
+            onChangeText={validarEmail}
+            autoCapitalize="none"
+            keyboardType="email-address"
           />
         </View>
+
+        {emailError ? <Text style={Styles.errorText}>{emailError}</Text> : null}
 
         <View style={Styles.campoComIcone}>
           <Image
@@ -86,7 +104,7 @@ export default function Login() {
         </View>
       </View>
 
-      <TouchableOpacity style={Styles.botao} onPress={loginEmailSenha}>
+      <TouchableOpacity style={Styles.botao} onPress={loginEmailSenha} disabled={loading}>
         <Text style={Styles.texto}>{loading ? "Entrando..." : "Entrar"}</Text>
       </TouchableOpacity>
 
@@ -128,6 +146,12 @@ const Styles = StyleSheet.create({
     marginBottom: height * 0.02,
     marginVertical: height * 0.07,
     fontWeight: 'bold',
+  },
+
+  errorText: {
+    color: "red",
+    fontSize: 12,
+    marginBottom: 8,
   },
 
   campoComIcone: {
