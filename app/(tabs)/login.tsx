@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Dimensions, Image, StyleSheet, Text, TextInput,TouchableOpacity, View, Alert}  
-from "react-native";
-import { router } from 'expo-router';
+import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
+import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get('window');
 
 export default function Login() {
+
+  const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -20,7 +21,7 @@ export default function Login() {
     setEmailError(emailValido ? "" : "Email inválido (ex: usuario@gmail.com)");
   };
 
-  // Login com email e senha
+
   async function loginEmailSenha() {
     if (!email || !senha) {
       Alert.alert("Erro", "Preencha email e senha.");
@@ -35,7 +36,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const resp = await fetch("http://192.168.1.22:3000/api/aluno", {
+      const resp = await fetch("https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/usuario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim(), senha: senha.trim() })
@@ -43,19 +44,39 @@ export default function Login() {
 
       const dados = await resp.json();
 
+      console.log("STATUS:", resp.status);
+      console.log("DADOS:", dados);
+
       if (!resp.ok) {
         Alert.alert("Erro", dados.error || "Erro ao fazer login");
-      } else {
-        await AsyncStorage.setItem("@user", JSON.stringify(dados.usuario));
-        router.push("/inicio");
+        return;
       }
 
+    
+      const usuarioEncontrado = Array.isArray(dados)
+        ? dados.find(u => u.email === email.trim())
+        : dados.usuario;
+
+      if (!usuarioEncontrado) {
+        Alert.alert("Erro", "Usuário não encontrado.");
+        return;
+      }
+
+    
+      await AsyncStorage.setItem("@user", JSON.stringify(usuarioEncontrado));
+
+      console.log("Usuário salvo:", usuarioEncontrado);
+
+      router.replace("/inicio"); 
+
     } catch (error) {
+      console.log("ERRO:", error);
       Alert.alert("Erro", "Falha ao conectar ao servidor.");
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   }
+
 
   return (
     <View style={Styles.container}>
