@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import { useRouter } from "expo-router";
+//import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get('window');
@@ -21,61 +22,80 @@ export default function Login() {
     setEmailError(emailValido ? "" : "Email inválido (ex: usuario@gmail.com)");
   };
 
-
-  async function loginEmailSenha() {
-    if (!email || !senha) {
-      Alert.alert("Erro", "Preencha email e senha.");
-      return;
-    }
-
-    if (emailError) {
-      Alert.alert("Erro", "Corrija o e-mail antes de continuar.");
-      return;
-    }
-
-    setLoading(true);
-
+  async function loginGoogle() {
+    console.log("Fazendo login com o google!")
+    /*
     try {
-      const resp = await fetch("https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/usuario", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), senha: senha.trim() })
-      });
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
 
-      const dados = await resp.json();
+      await AsyncStorage.setItem("@user", JSON.stringify(userInfo.user));
 
-      console.log("STATUS:", resp.status);
-      console.log("DADOS:", dados);
+      navigation.replace("UserScreen");
 
-      if (!resp.ok) {
-        Alert.alert("Erro", dados.error || "Erro ao fazer login");
-        return;
-      }
-
-    
-      const usuarioEncontrado = Array.isArray(dados)
-        ? dados.find(u => u.email === email.trim())
-        : dados.usuario;
-
-      if (!usuarioEncontrado) {
-        Alert.alert("Erro", "Usuário não encontrado.");
-        return;
-      }
-
-    
-      await AsyncStorage.setItem("@user", JSON.stringify(usuarioEncontrado));
-
-      console.log("Usuário salvo:", usuarioEncontrado);
-
-      router.replace("/inicio"); 
-
-    } catch (error) {
-      console.log("ERRO:", error);
-      Alert.alert("Erro", "Falha ao conectar ao servidor.");
-    } finally {
-      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      Alert.alert("Erro", "Não foi possível entrar com o Google.");
     }
+      */
   }
+  async function loginEmailSenha() {
+  if (!email || !senha) {
+    Alert.alert("Erro", "Preencha email e senha.");
+    return;
+  }
+
+  if (emailError) {
+    Alert.alert("Erro", "Corrija o e-mail antes de continuar.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const resp = await fetch("https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/autenticacao/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email.trim(), senha: senha.trim() })
+    });
+
+    
+    const raw = await resp.text(); // peguei o raw para debugar
+    console.log("RAW RESPONSE:", raw);
+
+    let dados;
+    try {
+      dados = JSON.parse(raw);
+    } catch (e) {
+      console.log("Erro ao parsear JSON:", e);
+      Alert.alert("Erro", "Resposta inválida do servidor.");
+      return;
+    }
+
+    console.log("STATUS:", resp.status);
+    console.log("DADOS:", dados);
+
+    if (!resp.ok) {
+      Alert.alert("Erro", dados.error || "Erro ao fazer login");
+      return;
+    }
+
+    
+    const usuarioEncontrado = dados; // a api retorna um objeto
+
+    await AsyncStorage.setItem("@user", JSON.stringify(usuarioEncontrado));
+    console.log("Usuário salvo:", usuarioEncontrado);
+
+    router.replace("/inicio");
+
+  } catch (error) {
+    console.log("ERRO:", error);
+    Alert.alert("Erro", "Falha ao conectar ao servidor.");
+  } finally {
+    setLoading(false);
+  }
+}
+
 
 
   return (
@@ -126,6 +146,13 @@ export default function Login() {
         <Text style={Styles.ou}>OU</Text>
         <View style={Styles.linha} />
       </View>
+
+        <Image 
+          source={require('@/assets/images/google.png')}
+          style={Styles.iconeGoogle}
+        />
+     
+
     </View>
   );
 }
@@ -226,4 +253,10 @@ const Styles = StyleSheet.create({
     fontSize: 14,
     color: '#000',
   },
+
+  iconeGoogle: {
+    width: width * 0.07,
+    height: height * 0.04,
+    
+  }
 });
