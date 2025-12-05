@@ -1,13 +1,69 @@
-import React, { useState } from 'react';
-import { Dimensions, Image, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
-import { Link } from 'expo-router';
+import React, { useState, useEffect } from 'react';
+import { Dimensions, Image, StyleSheet, Text, TextInput, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Link, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
 export default function adicionar() {
-    const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState(null); 
+    const [openTipo, setOpenTipo] = useState(false);
+    const [openConteudo, setOpenConteudo] = useState(false);
+
+    const [selectedTipo, setSelectedTipo] = useState(null); 
+    const [selectedConteudo, setSelectedConteudo] = useState(null);
+
+    const [conteudos, setConteudos] = useState([]);
+
+    const [nome, setNome] = useState("");
+    const [link, setLink] = useState("");
+
+
+    useEffect(() => {
+        async function carregarConteudos() {
+            try {
+                const resp = await fetch("https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/conteudo");
+                const data = await resp.json();
+                setConteudos(data);
+            } catch (e) {
+                console.log("Erro carregando conteúdos:", e);
+            }
+        }
+        carregarConteudos();
+    }, []);
+
+    async function salvarMaterial() {
+        if (!selectedTipo || !selectedConteudo || nome.trim() === "" || link.trim() === "") {
+            alert("Preencha tudo!");
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                "https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/material",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        tipo: selectedTipo,
+                        nome,
+                        link,
+                        conteudo_id: selectedConteudo
+                    })
+                }
+            );
+
+            const data = await response.json();
+            console.log("Salvo:", data);
+
+            alert("Material salvo com sucesso!");
+            router.replace("/materiais");
+        } catch (e) {
+            alert("Erro ao salvar.");
+            console.log(e);
+        }
+    }
 
     return (
         <View style={styles.container}> 
@@ -18,68 +74,108 @@ export default function adicionar() {
 
             <Text style={styles.introducao}>Adicionar Material:</Text>
 
-            <TouchableOpacity 
-                style={styles.dropdown}
-                onPress={() => setOpen(!open)}
-            >
-                <Text style={styles.dropdownTexto}>Tipo</Text>
-                <Ionicons name={open ? "chevron-up" : "chevron-down"} size={24} color="#000" />
-            </TouchableOpacity>
+            <ScrollView>
 
-            {open && (
-                <View style={styles.dropdownArea}>
-                    <TouchableOpacity 
-                        style={styles.item}
-                        onPress={() => setSelected(selected === "videos" ? null : "videos")}
-                    >
-                        <Text style={styles.checkbox}>{selected === "videos" ? "☑" : "☐"}</Text>
-                        <Text style={styles.itemTxt}>Vídeos Aulas</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity 
-                        style={styles.item}
-                        onPress={() => setSelected(selected === "lista" ? null : "lista")}
-                    >
-                        <Text style={styles.checkbox}>{selected === "lista" ? "☑" : "☐"}</Text>
-                        <Text style={styles.itemTxt}>Lista de exercícios</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity 
-                        style={styles.item}
-                        onPress={() => setSelected(selected === "resumo" ? null : "resumo")}
-                    >
-                        <Text style={styles.checkbox}>{selected === "resumo" ? "☑" : "☐"}</Text>
-                        <Text style={styles.itemTxt}>Resumos</Text>
-                    </TouchableOpacity>
-                </View>
-            )}
-
-            <View style={styles.inputContainer}>
-                <Text style={styles.titulo}>Nome</Text>
-                <TextInput 
-                    style={styles.campo}
-                    placeholderTextColor={'#000'}
-                    placeholder='----------'    
-                />
-            </View>
-
-            <View style={styles.inputContainer}>
-                <Text style={styles.titulo}>Link</Text>
-                <TextInput
-                    style={styles.campo}
-                    placeholderTextColor={'#000'}
-                    placeholder='----------'
-                />
-            </View>
-
-            <Link href="/" asChild>
-                <TouchableOpacity style={styles.botao}>
-                    <Text style={styles.botaoTxt}>salvar</Text>
+                {/* ------------------ DROP DOWN TIPO --------------------- */}
+                <TouchableOpacity 
+                    style={styles.dropdown}
+                    onPress={() => setOpenTipo(!openTipo)}
+                >
+                    <Text style={styles.dropdownTexto}>
+                        {selectedTipo ? selectedTipo : "Tipo"}
+                    </Text>
+                    <Ionicons name={openTipo ? "chevron-up" : "chevron-down"} size={24} color="#000" />
                 </TouchableOpacity>
-            </Link>
+
+                {openTipo && (
+                    <View style={styles.dropdownArea}>
+                        <TouchableOpacity 
+                            style={styles.item}
+                            onPress={() => { setSelectedTipo("videos"); setOpenTipo(false); }}
+                        >
+                            <Text style={styles.checkbox}>{selectedTipo === "videos" ? "☑" : "☐"}</Text>
+                            <Text style={styles.itemTxt}>Vídeos Aulas</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                            style={styles.item}
+                            onPress={() => { setSelectedTipo("lista"); setOpenTipo(false); }}
+                        >
+                            <Text style={styles.checkbox}>{selectedTipo === "lista" ? "☑" : "☐"}</Text>
+                            <Text style={styles.itemTxt}>Lista de exercícios</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity 
+                            style={styles.item}
+                            onPress={() => { setSelectedTipo("resumo"); setOpenTipo(false); }}
+                        >
+                            <Text style={styles.checkbox}>{selectedTipo === "resumo" ? "☑" : "☐"}</Text>
+                            <Text style={styles.itemTxt}>Resumos</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+
+                {/* ------------------ DROP DOWN CONTEÚDO --------------------- */}
+                <TouchableOpacity 
+                    style={styles.dropdown}
+                    onPress={() => setOpenConteudo(!openConteudo)}
+                >
+                    <Text style={styles.dropdownTexto}>
+                        {selectedConteudo 
+                            ? conteudos.find(c => c.id === selectedConteudo)?.nome 
+                            : "Conteúdo"}
+                    </Text>
+                    <Ionicons name={openConteudo ? "chevron-up" : "chevron-down"} size={24} color="#000" />
+                </TouchableOpacity>
+
+                {openConteudo && (
+                    <View style={styles.dropdownArea}>
+                        {conteudos.map((c) => (
+                            <TouchableOpacity 
+                                key={c.id}
+                                style={styles.item}
+                                onPress={() => { setSelectedConteudo(c.id); setOpenConteudo(false); }}
+                            >
+                                <Text style={styles.checkbox}>{selectedConteudo === c.id ? "☑" : "☐"}</Text>
+                                <Text style={styles.itemTxt}>{c.nome}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                )}
+
+               
+                <View style={styles.inputContainer}>
+                    <Text style={styles.titulo}>Nome</Text>
+                    <TextInput 
+                        style={styles.campo}
+                        placeholderTextColor={'#000'}
+                        placeholder='----------'
+                        value={nome}
+                        onChangeText={setNome}
+                    />
+                </View>
+
+            
+                <View style={styles.inputContainer}>
+                    <Text style={styles.titulo}>Link</Text>
+                    <TextInput
+                        style={styles.campo}
+                        placeholderTextColor={'#000'}
+                        placeholder='----------'
+                        value={link}
+                        onChangeText={setLink}
+                    />
+                </View>
+            </ScrollView>
+
+            <TouchableOpacity style={styles.botao} onPress={salvarMaterial}>
+                <Text style={styles.botaoTxt}>salvar</Text>
+            </TouchableOpacity>
         </View>
     );
 }
+
+
 
 const styles = StyleSheet.create({
     container: {

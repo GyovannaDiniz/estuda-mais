@@ -12,19 +12,19 @@ const [conteudo, setConteudo] = useState([]);
 
   useEffect(() => {
     const fetchMateriais = async () => {
-      const response = await fetch('https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/material');
+      const response = await fetch('https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/material');
       const data = await response.json();
       setMateriais(data);
     }
 
     const fetchTipo = async () => {
-      const response = await fetch('https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/tipo');
+      const response = await fetch('https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/tipo');
       const data = await response.json();
       setTipo(data);
     }
 
     const fetchConteudo = async () => {
-      const response = await fetch('https://scaling-space-train-5gr6pxgvx5jqhv4v4-3000.app.github.dev/api/conteudo');
+      const response = await fetch('https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/conteudo');
       const data = await response.json();
       setConteudo(data);
     }
