@@ -59,7 +59,8 @@ export default function TabRootLayout() {
         options={{
           headerShown: false,
           title:"adicionar",
-        
+          tabBarActiveTintColor: "pink", //ativo
+          tabBarInactiveTintColor: "white", //inativo
         }} 
       />
 
@@ -67,7 +68,19 @@ export default function TabRootLayout() {
         name="simulados"
         options={{
           headerShown: false,
-          title: "simulados"
+          title: "simulados",
+          tabBarActiveTintColor: "pink", //ativo
+          tabBarInactiveTintColor: "white", //inativo
+        }}
+      />
+
+      <Tabs.Screen 
+        name="adicionarSimulado"
+        options={{
+          headerShown: false,
+          title: "adiconarSimulado",
+          tabBarActiveTintColor: "pink", //ativo
+          tabBarInactiveTintColor: "white", //inativo
         }}
       />
     </Tabs>
