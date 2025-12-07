@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View, GestureResponderEvent } from 'react-native';
+import { Link } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
@@ -10,14 +11,16 @@ export default function simulados() {
                 source={require('@/assets/images/logoEstuda.png')}
                 style={styles.imagem}
             />
-            <View style={styles.caixaAdd}>
-                <Image 
-                    source={require('@/assets/images/mais.png')}
-                    style={styles.imagemAdd}
-                />
-                <Text style={styles.textoAdd}>Add</Text>
 
-            </View>
+            <Link href="/adicionarSimulado" asChild>
+                <TouchableOpacity style={styles.caixaAdd}>
+                    <Image 
+                        source={require('@/assets/images/mais.png')}
+                        style={styles.imagemAdd}
+                    />
+                    <Text style={styles.textoAdd}>Add</Text>
+                </TouchableOpacity>
+            </Link>
 
             <ScrollView>
                 <View style={styles.inputContainer}>
@@ -26,7 +29,7 @@ export default function simulados() {
                             source={require('@/assets/images/grafico-simulados.png')}
                             style={styles.imagemSimulado}
                         />
-                        <Text style={styles.tituloSimulado}>ENEM</Text>
+                        <Text style={styles.tituloSimulado}> Simulado do Enem - 2024 </Text>
                     </View>
                     <Text style={styles.texto}>
                         45 questões de matemática e suas tecnologias
@@ -45,7 +48,7 @@ export default function simulados() {
                             source={require('@/assets/images/grafico-simulados.png')}
                             style={styles.imagemSimulado}
                         />
-                        <Text style={styles.tituloSimulado}>ENEM</Text>
+                        <Text style={styles.tituloSimulado}> Simulado do Enem - 2025</Text>
                     </View>
             
                     <Text style={styles.texto}>
@@ -66,7 +69,7 @@ export default function simulados() {
                             source={require('@/assets/images/grafico-simulados.png')}
                             style={styles.imagemSimulado}
                         />
-                        <Text style={styles.tituloSimulado}>ENEM</Text>
+                        <Text style={styles.tituloSimulado}> Simulado do Enem - 2026</Text>
                     </View>
 
                     <Text style={styles.texto}>
