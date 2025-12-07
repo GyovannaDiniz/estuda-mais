@@ -43,9 +43,10 @@ export default function Materiais() {
   const removerMaterial = async () => {
     if (!materialParaExcluir) return;
 
-    await fetch("https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/material/${materialParaExcluir}", {
+    await fetch(`https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/material/${materialParaExcluir}`, {
       method: "DELETE",
     });
+
 
     setMateriais((prev) => prev.filter((m) => m.id !== materialParaExcluir));
     setModalVisible(false);
