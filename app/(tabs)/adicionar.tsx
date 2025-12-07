@@ -76,7 +76,7 @@ export default function adicionar() {
 
             <ScrollView>
 
-                {/* ------------------ DROP DOWN TIPO --------------------- */}
+                    // dropdown tipo //
                 <TouchableOpacity 
                     style={styles.dropdown}
                     onPress={() => setOpenTipo(!openTipo)}
@@ -114,8 +114,7 @@ export default function adicionar() {
                         </TouchableOpacity>
                     </View>
                 )}
-
-                {/* ------------------ DROP DOWN CONTEÚDO --------------------- */}
+                 // dropdown conteudo //
                 <TouchableOpacity 
                     style={styles.dropdown}
                     onPress={() => setOpenConteudo(!openConteudo)}
