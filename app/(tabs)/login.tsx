@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Alert, Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 //import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -40,61 +40,61 @@ export default function Login() {
       */
   }
   async function loginEmailSenha() {
-  if (!email || !senha) {
-    Alert.alert("Erro", "Preencha email e senha.");
-    return;
-  }
+    if (!email || !senha) {
+      Alert.alert("Erro", "Preencha email e senha.");
+      return;
+    }
 
-  if (emailError) {
-    Alert.alert("Erro", "Corrija o e-mail antes de continuar.");
-    return;
-  }
+    if (emailError) {
+      Alert.alert("Erro", "Corrija o e-mail antes de continuar.");
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    const resp = await fetch("https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/autenticacao/signin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email.trim(), senha: senha.trim() })
-    });
-
-    
-    const raw = await resp.text(); // peguei o raw para debugar
-    console.log("RAW RESPONSE:", raw);
-
-    let dados;
     try {
-      dados = JSON.parse(raw);
-    } catch (e) {
-      console.log("Erro ao parsear JSON:", e);
-      Alert.alert("Erro", "Resposta inválida do servidor.");
-      return;
+      const resp = await fetch("https://3dblw8t2-3000.brs.devtunnels.ms/api/autenticacao/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), senha: senha.trim() })
+      });
+
+
+      const raw = await resp.text(); // peguei o raw para debugar
+      console.log("RAW RESPONSE:", raw);
+
+      let dados;
+      try {
+        dados = JSON.parse(raw);
+      } catch (e) {
+        console.log("Erro ao parsear JSON:", e);
+        Alert.alert("Erro", "Resposta inválida do servidor.");
+        return;
+      }
+
+      console.log("STATUS:", resp.status);
+      console.log("DADOS:", dados);
+
+      if (!resp.ok) {
+        Alert.alert("Erro", dados.error || "Erro ao fazer login");
+        return;
+      }
+
+
+      const usuarioEncontrado = dados; // a api retorna um objeto
+
+      await AsyncStorage.setItem("@user", JSON.stringify(usuarioEncontrado));
+      console.log("Usuário salvo:", usuarioEncontrado);
+
+      router.replace("/inicio");
+
+    } catch (error) {
+      console.log("ERRO:", error);
+      Alert.alert("Erro", "Falha ao conectar ao servidor.");
+    } finally {
+      setLoading(false);
     }
-
-    console.log("STATUS:", resp.status);
-    console.log("DADOS:", dados);
-
-    if (!resp.ok) {
-      Alert.alert("Erro", dados.error || "Erro ao fazer login");
-      return;
-    }
-
-    
-    const usuarioEncontrado = dados; // a api retorna um objeto
-
-    await AsyncStorage.setItem("@user", JSON.stringify(usuarioEncontrado));
-    console.log("Usuário salvo:", usuarioEncontrado);
-
-    router.replace("/inicio");
-
-  } catch (error) {
-    console.log("ERRO:", error);
-    Alert.alert("Erro", "Falha ao conectar ao servidor.");
-  } finally {
-    setLoading(false);
   }
-}
 
 
 
@@ -147,11 +147,11 @@ export default function Login() {
         <View style={Styles.linha} />
       </View>
 
-        <Image 
-          source={require('@/assets/images/google.png')}
-          style={Styles.iconeGoogle}
-        />
-     
+      <Image
+        source={require('@/assets/images/google.png')}
+        style={Styles.iconeGoogle}
+      />
+
 
     </View>
   );
@@ -257,6 +257,6 @@ const Styles = StyleSheet.create({
   iconeGoogle: {
     width: width * 0.07,
     height: height * 0.04,
-    
+
   }
 });

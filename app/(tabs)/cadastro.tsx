@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import { router } from "expo-router";
+import { useState } from 'react';
+import { Alert, Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -16,7 +16,7 @@ export default function cadastro() {
         }
 
         try {
-            const resp = await fetch("https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/autenticacao/signup",
+            const resp = await fetch("https://3dblw8t2-3000.brs.devtunnels.ms/api/autenticacao/signup",
                 {
                     method: "POST",
                     headers: {
@@ -27,7 +27,7 @@ export default function cadastro() {
                         email,
                         senha,
                         role: "aluno"
-                       
+
                     })
                 }
             );
@@ -48,7 +48,7 @@ export default function cadastro() {
                     Alert.alert("Atenção", "E-mail já cadastrado!");
                     return;
                 }
-                Alert.alert("Erro", respostaJSON.error|| respostaJSON.message || "Erro ao cadastrar.");
+                Alert.alert("Erro", respostaJSON.error || respostaJSON.message || "Erro ao cadastrar.");
                 return;
             }
 
@@ -114,9 +114,9 @@ export default function cadastro() {
                 </TouchableOpacity>
 
                 <View style={styles.linhaComTexto}>
-                    <View style={styles.linha}/>
+                    <View style={styles.linha} />
                     <Text style={styles.ou}>OU</Text>
-                    <View style={styles.linha}/>
+                    <View style={styles.linha} />
                 </View>
             </View>
         </View>
@@ -142,27 +142,27 @@ const styles = StyleSheet.create({
     },
 
     titulo: {
-        textAlign:'center',
+        textAlign: 'center',
         fontSize: width * 0.05,
         marginBottom: height * 0.02,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
 
     botao: {
-        backgroundColor:'#FAD0C4',
+        backgroundColor: '#FAD0C4',
         padding: 10,
-        borderRadius:  height * 0.02,
+        borderRadius: height * 0.02,
         borderWidth: width * 0.001,
-        borderColor:'#C1C1C1',
+        borderColor: '#C1C1C1',
         marginHorizontal: width * 0.05,
         alignItems: 'center',
         width: width * 0.50,
     },
 
     texto: {
-        color:'#000',
+        color: '#000',
         fontSize: 16,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
 
     linhaComTexto: {
@@ -173,10 +173,10 @@ const styles = StyleSheet.create({
     },
 
     linha: {
-      height: height * 0.002,
-      width: width * 0.2,
-      backgroundColor: '#000',
-      marginVertical: height * 0.02,
+        height: height * 0.002,
+        width: width * 0.2,
+        backgroundColor: '#000',
+        marginVertical: height * 0.02,
     },
 
     ou: {
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
 
     iconeDentro: {
         width: width * 0.05,
-        height:  height * 0.03,
+        height: height * 0.03,
         marginRight: 10,
     },
 

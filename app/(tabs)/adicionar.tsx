@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Dimensions, Image, StyleSheet, Text, TextInput, View, TouchableOpacity, ScrollView } from 'react-native';
-import { Link, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { Dimensions, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
+
+const SERVER = "https://3dblw8t2-3000.brs.devtunnels.ms/";
 
 export default function adicionar() {
     const [openTipo, setOpenTipo] = useState(false);
     const [openConteudo, setOpenConteudo] = useState(false);
 
-    const [selectedTipo, setSelectedTipo] = useState(null); 
+    const [selectedTipo, setSelectedTipo] = useState(null);
     const [selectedConteudo, setSelectedConteudo] = useState(null);
 
     const [conteudos, setConteudos] = useState([]);
@@ -18,10 +20,11 @@ export default function adicionar() {
     const [link, setLink] = useState("");
 
 
+
     useEffect(() => {
         async function carregarConteudos() {
             try {
-                const resp = await fetch("https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/conteudo");
+                const resp = await fetch(`${SERVER}api/conteudo`);
                 const data = await resp.json();
                 setConteudos(data);
             } catch (e) {
@@ -39,7 +42,7 @@ export default function adicionar() {
 
         try {
             const response = await fetch(
-                "https://silver-barnacle-x5p6qv5rvx9gh6449-3000.app.github.dev/api/material",
+                `${SERVER}api/material`,
                 {
                     method: "POST",
                     headers: {
@@ -66,8 +69,8 @@ export default function adicionar() {
     }
 
     return (
-        <View style={styles.container}> 
-            <Image 
+        <View style={styles.container}>
+            <Image
                 source={require('@/assets/images/logoEstuda.png')}
                 style={styles.imagem}
             />
@@ -76,8 +79,7 @@ export default function adicionar() {
 
             <ScrollView>
 
-                    // dropdown tipo //
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={styles.dropdown}
                     onPress={() => setOpenTipo(!openTipo)}
                 >
@@ -89,7 +91,7 @@ export default function adicionar() {
 
                 {openTipo && (
                     <View style={styles.dropdownArea}>
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={styles.item}
                             onPress={() => { setSelectedTipo("videos"); setOpenTipo(false); }}
                         >
@@ -97,7 +99,7 @@ export default function adicionar() {
                             <Text style={styles.itemTxt}>Vídeos Aulas</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={styles.item}
                             onPress={() => { setSelectedTipo("lista"); setOpenTipo(false); }}
                         >
@@ -105,7 +107,7 @@ export default function adicionar() {
                             <Text style={styles.itemTxt}>Lista de exercícios</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={styles.item}
                             onPress={() => { setSelectedTipo("resumo"); setOpenTipo(false); }}
                         >
@@ -114,14 +116,14 @@ export default function adicionar() {
                         </TouchableOpacity>
                     </View>
                 )}
-                 // dropdown conteudo //
-                <TouchableOpacity 
+
+                <TouchableOpacity
                     style={styles.dropdown}
                     onPress={() => setOpenConteudo(!openConteudo)}
                 >
                     <Text style={styles.dropdownTexto}>
-                        {selectedConteudo 
-                            ? conteudos.find(c => c.id === selectedConteudo)?.nome 
+                        {selectedConteudo
+                            ? conteudos.find(c => c.id === selectedConteudo)?.nome
                             : "Conteúdo"}
                     </Text>
                     <Ionicons name={openConteudo ? "chevron-up" : "chevron-down"} size={24} color="#000" />
@@ -130,7 +132,7 @@ export default function adicionar() {
                 {openConteudo && (
                     <View style={styles.dropdownArea}>
                         {conteudos.map((c) => (
-                            <TouchableOpacity 
+                            <TouchableOpacity
                                 key={c.id}
                                 style={styles.item}
                                 onPress={() => { setSelectedConteudo(c.id); setOpenConteudo(false); }}
@@ -142,10 +144,10 @@ export default function adicionar() {
                     </View>
                 )}
 
-               
+
                 <View style={styles.inputContainer}>
                     <Text style={styles.titulo}>Nome</Text>
-                    <TextInput 
+                    <TextInput
                         style={styles.campo}
                         placeholderTextColor={'#000'}
                         placeholder='----------'
@@ -154,7 +156,7 @@ export default function adicionar() {
                     />
                 </View>
 
-            
+
                 <View style={styles.inputContainer}>
                     <Text style={styles.titulo}>Link</Text>
                     <TextInput
@@ -179,8 +181,8 @@ export default function adicionar() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-start', 
-        alignItems: 'center',     
+        justifyContent: 'flex-start',
+        alignItems: 'center',
         backgroundColor: '#F4F8FA',
         paddingTop: 20
     },

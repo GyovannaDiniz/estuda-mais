@@ -4,7 +4,7 @@
     "slug": "estuda-mais",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logoEstuda.png",
     "scheme": "estudamais",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

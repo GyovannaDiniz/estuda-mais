@@ -60,28 +60,6 @@ export default function simulados() {
                             <Text style={styles.textoBotao}>Iniciar</Text>
                         </TouchableOpacity>
                     </View>
-
-                </View>
-
-                <View style={styles.inputContainer}>
-                    <View style={styles.linhaTitulo}>
-                        <Image
-                            source={require('@/assets/images/grafico-simulados.png')}
-                            style={styles.imagemSimulado}
-                        />
-                        <Text style={styles.tituloSimulado}> Simulado do Enem - 2026</Text>
-                    </View>
-
-                    <Text style={styles.texto}>
-                        45 questões de matemática e suas tecnologias
-                    </Text>
-
-                    <View style={styles.areaBotao}>
-                        <TouchableOpacity style={styles.botao} onPress={() => console.log('iniciar clicado')}>
-                            <Text style={styles.textoBotao}>Iniciar</Text>
-                        </TouchableOpacity>
-                    </View>
-
                 </View>
 
             </ScrollView>
