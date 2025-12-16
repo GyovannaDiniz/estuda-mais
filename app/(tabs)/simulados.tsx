@@ -1,10 +1,46 @@
-import React from 'react';
-import { Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View, GestureResponderEvent } from 'react-native';
 import { Link } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
+const CardSimulado = ({titulo, texto}) => (
+    <View style={styles.inputContainer}>
+                    <View style={styles.linhaTitulo}>
+                        <Image
+                            source={require('@/assets/images/grafico-simulados.png')}
+                            style={styles.imagemSimulado}
+                        />
+                        <Text style={styles.tituloSimulado}> {titulo} </Text>
+                    </View>
+                    <Text style={styles.texto}>
+                        {texto}
+                    </Text>
+                    <View style={styles.areaBotao}>
+                        <TouchableOpacity style={styles.botao} onPress={() => console.log('iniciar clicado')}>
+                            <Text style={styles.textoBotao}>Iniciar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+);
+
+const SERVER = "https://3dblw8t2-3000.brs.devtunnels.ms/";
+
 export default function simulados() {
+
+    const [simulados, setSimulados] = useState([]);
+
+    useEffect(() => {
+        console.log(SERVER)
+        const fetchSimulados = async () => {
+          const response = await fetch(`${SERVER}api/simulados`);
+          const data = await response.json();
+          setSimulados(data);
+        };
+        fetchSimulados();
+      }, []);
+
     return (
         <View style={styles.container}>
             <Image
@@ -23,44 +59,11 @@ export default function simulados() {
             </Link>
 
             <ScrollView>
-                <View style={styles.inputContainer}>
-                    <View style={styles.linhaTitulo}>
-                        <Image
-                            source={require('@/assets/images/grafico-simulados.png')}
-                            style={styles.imagemSimulado}
-                        />
-                        <Text style={styles.tituloSimulado}> Simulado do Enem - 2024 </Text>
-                    </View>
-                    <Text style={styles.texto}>
-                        45 questões de matemática e suas tecnologias
-                    </Text>
-                    <View style={styles.areaBotao}>
-                        <TouchableOpacity style={styles.botao} onPress={() => console.log('iniciar clicado')}>
-                            <Text style={styles.textoBotao}>Iniciar</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
+                {simulados.map(s => (
+                    <CardSimulado key={s.id} titulo={s.title} texto={s.description} ></CardSimulado>
+                ))}
                 
-                <View style={styles.inputContainer} >
-                    <View style={styles.linhaTitulo}>
-                        <Image
-                            source={require('@/assets/images/grafico-simulados.png')}
-                            style={styles.imagemSimulado}
-                        />
-                        <Text style={styles.tituloSimulado}> Simulado do Enem - 2025</Text>
-                    </View>
             
-                    <Text style={styles.texto}>
-                        45 questões de matemática e suas tecnologias
-                    </Text>
-
-                    <View style={styles.areaBotao}>
-                        <TouchableOpacity style={styles.botao} onPress={() => console.log('iniciar clicado')}>
-                            <Text style={styles.textoBotao}>Iniciar</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
 
             </ScrollView>
         </View>

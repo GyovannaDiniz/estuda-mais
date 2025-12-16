@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Dimensions, Image, StyleSheet, Text, TextInput, View, TouchableOpacity, ScrollView } from 'react-native';
-import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { Dimensions, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
 const { width, height } = Dimensions.get('window');
 
+const SERVER = "https://3dblw8t2-3000.brs.devtunnels.ms/";
 
 export default function adicionarSim() {
 
@@ -25,10 +26,17 @@ export default function adicionarSim() {
     const [selectedSimulado, setSelectedSimulado] = useState(null);
 
 
-    const simulados = [
-        "Simulado 2024",
-        "Simulado 2025",
-    ];
+    const [simulados, setSimulados] = useState([]);
+    
+        useEffect(() => {
+            console.log(SERVER)
+            const fetchSimulados = async () => {
+              const response = await fetch(`${SERVER}api/simulados`);
+              const data = await response.json();
+              setSimulados(data);
+            };
+            fetchSimulados();
+          }, []);
 
 
     return (
@@ -53,7 +61,7 @@ export default function adicionarSim() {
                     onPress={() => setOpenSimulado(!openSimulado)}
                 >
                     <Text style={styles.dropdownTexto}>
-                        {selectedSimulado ? selectedSimulado : "Selecione o Simulado"}
+                        {selectedSimulado ? selectedSimulado.title    : "Selecione o Simulado"}
                     </Text>
 
 
@@ -79,7 +87,7 @@ export default function adicionarSim() {
                                 <Text style={styles.checkbox}>
                                     {selectedSimulado === item ? "☑" : "☐"}
                                 </Text>
-                                <Text style={styles.itemTxt}>{item}</Text>
+                                <Text style={styles.itemTxt}>{item.title}</Text>
                             </TouchableOpacity>
                         ))}
                     </View>

@@ -71,11 +71,24 @@ export default function TabRootLayout() {
           title: "simulados",
           tabBarActiveTintColor: "pink", //ativo
           tabBarInactiveTintColor: "white", //inativo
+          tabBarIcon: ({ color, size }) => (                
+                <MaterialCommunityIcons name="bomb" size={size} color="white" />
+          ),
         }}
       />
 
       <Tabs.Screen 
         name="adicionarSimulado"
+        options={{
+          headerShown: false,
+          title: "adiconarSimulado",
+          tabBarActiveTintColor: "pink", //ativo
+          tabBarInactiveTintColor: "white", //inativo
+        }}
+      />
+
+      <Tabs.Screen 
+        name="addSimulado"
         options={{
           headerShown: false,
           title: "adiconarSimulado",
